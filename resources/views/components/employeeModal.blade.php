@@ -1,0 +1,116 @@
+{{--背景ぼかし黒--}}
+<div class="flexCenter fixed left-0 top-0 z-100 min-h-screen w-full bg-black/85 px-4">
+
+    {{--Modal親タグ (背景色/白色)--}}
+    <div class="bg-white w-full h-[90vh] md:w-85% lg:w-8/12 max-w-screen-lg rounded-[20px] md:px-8 my-12 text-center overflow-scroll">
+        <!-- Modal content -->
+        <div class="flexColumnCenter p-6">
+
+            {{--Modal header--}}
+            <div class="ml-auto">
+                <button wire:click="closeModal()" class="ml-auto"><i class="fa-solid fa-xmark text-4xl font-bold"></i></button>
+            </div>
+
+            {{--Modal body--}}
+            <div class="w-full">
+
+                {{--トップ画像--}}
+                <div class="w-full relative">
+                    <img src="{{asset('img/'.$modalData["image"])}}" class="md:h-550 w-full object-cover">
+                    <h3 class="shadow-[0px 0px 8px rgba(255, 255, 255, 0.50)] text-md absolute bottom-0 w-full px-4 py-2 text-start font-black !leading-relaxed text-textBlack md:text-3xl">
+                        {{$modalData["title"]}}
+                    </h3>
+                </div>
+
+                {{--学校詳細--}}
+                <div class="flexColumnCenter md:flex-row gap-8 py-6">
+                    <div class="flex items-center">
+                        <p class="text-white bg-baseColor px-3 py-1">{{$modalData["job_dpt"]}}</p>
+                    </div>
+                    <aside class="flex flex-col">
+                        <div class="flex gap-2">
+                            <h4 class="text-baseColor font-bold text-xl">{{$modalData["name"]}}</h4>
+                            <p class="text-sm md:text-base">{{$modalData["join"]}}</p>
+                        </div>
+                        <p class="text-sm md:text-base">{{$modalData["school"]}} {{$modalData["department"]}}</p>
+                    </aside>
+                </div>
+
+                {{--各質問--}}
+                <div class="flexColumn gap-4 text-sm md:text-base">
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            入社へのきっかけ、決め手は？
+                        </h4>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst1"]}}</p>
+                    </div>
+
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            仕事のやりがいを感じるとき
+                        </h4>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst2"]}}</p>
+                    </div>
+
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            日々、意識していること
+                        </h4>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst3"]}}</p>
+                    </div>
+
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            今後の目標
+                        </h4>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst4"]}}</p>
+                    </div>
+
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            就職活動中の皆さんへ
+                        </h4>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst5"]}}</p>
+                        <img src="{{asset('img/'.$modalData["modalImg1"])}}" class="pt-4 w-full object-cover">
+                    </div>
+
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            ある1日のスケジュール
+                        </h4>
+                        <div class="flex flex-col gap-4 mt-4">
+                            @foreach($modalData["plans"] as $key=>$value)
+                                <aside class="flex gap-4">
+                                    <p>{{$key}}</p>
+                                    <p>{{$value}}</p>
+                                </aside>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            キャリアパス
+                        </h4>
+                        @foreach($modalData["qst6"] as $val)
+                            <p class="text-md mt-4 text-left leading-relaxed">{{$val}}</p>
+                        @endforeach
+                    </div>
+
+                    <div>
+                        <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
+                            休日の過ごし方
+                        </h4>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst7"]}}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="flex items-center mt-8 p-4 md:p-5 rounded-b dark:border-gray-600">
+                <button wire:click="closeModal()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">閉じる</button>
+            </div>
+        </div>
+    </div>
+</div>

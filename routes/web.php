@@ -14,9 +14,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//============================[本番]=====================================
+
+
+Route::get('/',function (){
+    return view("kikukawa");
 });
+Route::get('/', [\App\Http\Controllers\kikukawaController::class,"giveInfo"])->name('giveInfo');
+
+Route::get('/dashboard-main', [\App\Http\Controllers\kikukawaController::class,"dashboardMain"])->name('dashboardMain');
+
+Route::get('/dashboard-user', [\App\Http\Controllers\kikukawaController::class,"dashboardUser"])->name('dashboardUser');
+
+Route::post("add-event",[\App\Http\Controllers\kikukawaController::class,"addEvent"])->name("add-event");
+
+Route::post("add-category",[\App\Http\Controllers\kikukawaController::class,"addCategory"])->name("add-category");
+
+Route::get("add-category",[\App\Http\Controllers\kikukawaController::class,"test"])->name("test");
+
+
+//=====================================================================================================
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

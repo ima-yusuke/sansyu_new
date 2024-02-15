@@ -1,3 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+html{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+.events:after{
+    content: "";
+    display: block;
+    width: 35%;
+    height: 0;
+}
+
+.hideFlag{
+    display: none;
+}
+
+.borderRed{
+    border: 1px solid red;
+}
+
+.commonSectionStyles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+    .commonSectionStyles {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+}
+
+
+@layer components {
+    .flexColumn{
+        @apply flex flex-col
+    }
+    .flexColumnCenter{
+        @apply flex flex-col justify-center items-center
+    }
+    .flexCenter{
+        @apply flex flex-row justify-center items-center
+    }
+    .flexBetween{
+        @apply flex flex-row justify-between items-center
+    }
+    .flexEnd-X{
+        @apply flex flex-row justify-end items-center
+    }
+}
+
+
+
