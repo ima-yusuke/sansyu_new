@@ -72,10 +72,10 @@
             <?php
                 $tmpArray =[];
 
-                foreach($internship as $key=>$value){
+                foreach($eventInfos as $key=>$value){
                     //下記forループで初回はcountが0になるのを防ぐため
                     if($tmpArray==null){
-                        array_push($tmpArray,["category"=>$value["category"],"categoryName"=>$value["categoryName"]]);
+                        array_push($tmpArray,["category"=>$value["category"],"categoryName"=>$value->events["category_name"]]);
                         continue;
                     };
 
@@ -92,7 +92,7 @@
 
                     //重複していなかったら（flagがtrueだったら）$tmpArrayに追加する
                     if($flag==true){
-                        $newArray = ["category"=>$value["category"],"categoryName"=>$value["categoryName"]];
+                        $newArray = ["category"=>$value["category"],"categoryName"=>$value->events["category_name"]];
                         array_push($tmpArray,$newArray);
                         $flag = false;
                     }
@@ -104,7 +104,7 @@
                 @for($i=0;$i<count($tmpArray);$i++)
                     <article class="flexColumnCenter gap-9 shrink-0 w-full md:w-[45%]">
                         <h3 class="text-base font-bold leading-7">{{$tmpArray[$i]["categoryName"]}}</h3>
-                        @foreach($internship as $key=>$value)
+                        @foreach($eventInfos as $key=>$value)
                             @if($value["category"]==$tmpArray[$i]["category"])
                                 <div class="flexBetween w-full self-stretch border border-solid border-titleBlack p-4 rounded-8 bg-white shadow-border">
                                     <aside class="flexColumn items-start gap-2">
@@ -160,9 +160,8 @@
                     <div class="flex items-start justify-center content-start gap-6 flex-wrap w-full">
                         @foreach($products as $key=>$value)
                             <aside class="shadow-item flexColumn items-center gap-2 pb-4 rounded-8 md:w-[48%] lg:w-[31.5%]">
-                                <img src="{{asset('img/'.$value["image"])}}"
-                                     class="w-full rounded-8 shrink-0 object-cover">
-                                <p>{{$value["name"]}}</p>
+                                <img src="{{asset($value->path)}}" class="w-full h-full rounded-8 shrink-0 object-cover">
+                                <p>{{$value["p_name"]}}</p>
                             </aside>
                         @endforeach
                     </div>
@@ -189,14 +188,14 @@
                         <article class="flexColumn md:flex-row items-center gap-12">
                             <aside class="w-full md:w-auto">
                                 <div class="w-full md:w-270 md:h-330 flex justify-start items-start relative">
-                                    <img src="{{asset('img/'.$value["image"])}}"
+                                    <img src="{{asset($value["path"])}}"
                                          class="rounded-8 w-full h-full object-cover">
                                     <img src="{{asset("img/messageBg.jpg")}}"
                                          class="bottom-5 left-0 right-0 m-auto m-0 absolute rounded-8">
                                     <aside
                                         class="flexColumn items-center gap-px absolute left-0 right-0 m-0 m-auto bottom-12">
-                                        @if($value["id"]==1)
-                                            <p class="text-profile text-center text-xs capitalize">代表取締役</p>
+                                        @if($value["role"]!=null)
+                                            <p class="text-profile text-center text-xs capitalize">{{$value["role"]}}</p>
                                         @endif
                                         <p class="leading-6 text-center text-profileName capitalize">{{$value["name"]}}</p>
                                     </aside>
@@ -208,9 +207,7 @@
                                     <p class="font-bold leading-7 capitalize">{{$value["title"]}}</p>
                                 </div>
                                 <div class="leading-7 capitalize flex flex-col gap-y-8 w-full">
-                                    @foreach($value["msg"] as $text)
-                                        <p>{{$text}}</p>
-                                    @endforeach
+                                   <p class="whitespace-pre-wrap">{{$value["msg"]}}</p>
                                 </div>
                             </aside>
                         </article>
@@ -226,7 +223,8 @@
             </div>
 
             {{--コンテンツ--}}
-            <livewire:modal></livewire:modal>
+            <livewire:modal :interviews="$interviews"></livewire:modal>
+
         </section>
 
         {{--募集職種・募集要項--}}
@@ -356,24 +354,24 @@
             {{--タイトル--}}
             <x-title>よくある質問</x-title>
             {{--コンテンツ--}}
-            <div class=" w-full mx-4 flexColumn justify-center items-center lg:flex-row lg:flex-wrap gap-8 z-50 pt-16 overflow-hidden ">
+            <div class="w-[90%] lg:w-[85] mx-4 flexColumnCenter flex-wrap md:flex-row md:justify-between md:items-start gap-4 z-50 pt-16 overflow-hidden ">
 
                 {{--各質問--}}
                 @foreach($questions as $idx=>$values)
-                    <article class="z-50 h-100 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[45%] shrink-0">
+                    <article class="z-50 h-100 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shrink-0">
                         {{--質問--}}
                         <div class="flex gap-x-4 lg:gap-x-10 ml-2 md:ml-4 lg:ml-8 questionTitle">
                             <div class="flexCenter w-30 h-30 md:h-42 md:w-42 rounded-10 bg-questionIcon">
                                 <i class="fa-solid fa-chevron-down questionIcon"></i>
                             </div>
                             <div class="flex items-center">
-                                <p class="text-xs md:text-base lg:text-lg font-bold leading-6 opacity-90">{{$values["title"]}}</p>
+                                <p class="text-xs md:text-base lg:text-lg font-bold leading-6 opacity-90">{{$values["question"]}}</p>
                             </div>
                         </div>
 
                         {{--回答（最初非表示）--}}
                         <div class="hidden flex justify-start questionDrop px-8">
-                            <p class="text-xs md:text-base leading-6 md:leading-7">{{$values["text"]}}</p>
+                            <p class="text-xs md:text-base leading-6 md:leading-7">{{$values["answer"]}}</p>
                         </div>
                     </article>
                 @endforeach

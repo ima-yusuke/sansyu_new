@@ -20,6 +20,10 @@ html{
     display: none;
 }
 
+.eventFlag{
+    display: none;
+}
+
 .borderRed{
     border: 1px solid red;
 }
@@ -42,6 +46,12 @@ html{
 }
 
 
+/*========[dashboard button]==============*/
+
+
+
+
+/*==========================================*/
 @layer components {
     .flexColumn{
         @apply flex flex-col

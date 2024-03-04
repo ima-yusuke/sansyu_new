@@ -16,7 +16,7 @@
 
                 {{--トップ画像--}}
                 <div class="w-full relative">
-                    <img src="{{asset('img/'.$modalData["image"])}}" class="md:h-550 w-full object-cover">
+                    <img src="{{asset($modalData["path_1"])}}" class="md:h-550 w-full object-cover">
                     <h3 class="shadow-[0px 0px 8px rgba(255, 255, 255, 0.50)] text-md absolute bottom-0 w-full px-4 py-2 text-start font-black !leading-relaxed text-textBlack md:text-3xl">
                         {{$modalData["title"]}}
                     </h3>
@@ -30,9 +30,11 @@
                     <aside class="flex flex-col">
                         <div class="flex gap-2">
                             <h4 class="text-baseColor font-bold text-xl">{{$modalData["name"]}}</h4>
-                            <p class="text-sm md:text-base">{{$modalData["join"]}}</p>
+                            <p class="text-sm md:text-base">{{$modalData["hire_year"]}}入社</p>
                         </div>
-                        <p class="text-sm md:text-base">{{$modalData["school"]}} {{$modalData["department"]}}</p>
+                        <p class="text-sm md:text-base">
+                            {{$modalData["school"]}} {{$modalData["department"]}} {{$modalData["faculty"]}}卒業
+                        </p>
                     </aside>
                 </div>
 
@@ -42,49 +44,50 @@
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             入社へのきっかけ、決め手は？
                         </h4>
-                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst1"]}}</p>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["question_1"]}}</p>
                     </div>
 
                     <div>
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             仕事のやりがいを感じるとき
                         </h4>
-                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst2"]}}</p>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["question_2"]}}</p>
                     </div>
 
                     <div>
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             日々、意識していること
                         </h4>
-                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst3"]}}</p>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["question_3"]}}</p>
                     </div>
 
                     <div>
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             今後の目標
                         </h4>
-                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst4"]}}</p>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["question_4"]}}</p>
                     </div>
 
                     <div>
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             就職活動中の皆さんへ
                         </h4>
-                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst5"]}}</p>
-                        <img src="{{asset('img/'.$modalData["modalImg1"])}}" class="pt-4 w-full object-cover">
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["question_5"]}}</p>
+                        <img src="{{asset($modalData["path_2"])}}" class="pt-4 w-full object-cover">
                     </div>
 
                     <div>
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             ある1日のスケジュール
                         </h4>
-                        <div class="flex flex-col gap-4 mt-4">
-                            @foreach($modalData["plans"] as $key=>$value)
-                                <aside class="flex gap-4">
-                                    <p>{{$key}}</p>
-                                    <p>{{$value}}</p>
-                                </aside>
-                            @endforeach
+                        <div class="mt-4">
+{{--                            @foreach($modalData["plans"] as $key=>$value)--}}
+{{--                                <aside class="flex gap-4">--}}
+{{--                                    <p>{{$key}}</p>--}}
+{{--                                    <p>{{$value}}</p>--}}
+{{--                                </aside>--}}
+{{--                            @endforeach--}}
+                            <p class="text-md mt-4 text-left leading-relaxed whitespace-pre-wrap">{{$modalData["question_6"]}}</p>
                         </div>
                     </div>
 
@@ -92,16 +95,14 @@
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             キャリアパス
                         </h4>
-                        @foreach($modalData["qst6"] as $val)
-                            <p class="text-md mt-4 text-left leading-relaxed">{{$val}}</p>
-                        @endforeach
+                        <p class="text-md mt-4 text-left leading-relaxed whitespace-pre-wrap">{{$modalData["question_7"]}}</p>
                     </div>
 
                     <div>
                         <h4 class="border-baseColor text-baseColor border-l-4 bg-modalTitleBg py-2 pl-4 text-left font-bold">
                             休日の過ごし方
                         </h4>
-                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["qst7"]}}</p>
+                        <p class="text-md mt-4 text-left leading-relaxed">{{$modalData["question_8"]}}</p>
                     </div>
                 </div>
 

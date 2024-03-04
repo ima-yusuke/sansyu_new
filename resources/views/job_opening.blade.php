@@ -1,0 +1,171 @@
+<x-dash-layout>
+    <div class="flexColumn items-center gap-16 py-10">
+        {{--現在の一覧表示--}}
+        <section class="w-[90%] flexColumn gap-8 sm:rounded-lg">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 募集職種・募集要項一覧 】</h2>
+            <table class="shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr class="text-center">
+                    <th scope="col" class="px-6 py-3">
+                        役職
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        氏名
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        プロフィール画像
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        タイトル
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        メッセージ
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        編集
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        削除
+                    </th>
+                </tr>
+                </thead>
+{{--                <tbody>--}}
+{{--                @foreach($messages as $key=>$value)--}}
+{{--                    --}}{{--最初表示されるtr--}}
+{{--                    <tr class="originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">--}}
+{{--                        <td class="px-6 py-4 w-150 text-center">{{$value["role"]!=null?$value["role"]:"-"}}</td>--}}
+{{--                        <td class="px-6 py-4 w-150">{{$value["name"]}} </td>--}}
+{{--                        <td class="px-6 py-4 w-180">--}}
+{{--                            <img src="{{asset($value->path)}}" class="w-full rounded-8 shrink-0 object-cover">--}}
+{{--                        </td>--}}
+{{--                        <td class="px-6 py-4 w-1/6">{{$value["title"]}} </td>--}}
+{{--                        <td class="px-6 py-4 w-[40%]">{{$value["msg"]}} </td>--}}
+{{--                        <td class="px-6 py-4 w-42">--}}
+{{--                            <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>--}}
+{{--                        </td>--}}
+{{--                        <livewire:message-livewire :id="$value->id"></livewire:message-livewire>--}}
+{{--                    </tr>--}}
+
+{{--                    --}}{{--hidden (編集用tr)--}}
+{{--                    <tr class="editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">--}}
+{{--                        <form method="post" action="{{route('update-message',$value)}}" enctype="multipart/form-data">--}}
+{{--                            @csrf--}}
+{{--                            @method("patch")--}}
+{{--                            <td class="px-2 py-4 w-100"><input type="text" name="role" value="{{$value["role"]!=null?$value["role"]:null}}" class="text-xs"></td>--}}
+{{--                            <td class="px-2 py-4 w-100"><input type="text" name="name" value="{{$value["name"]}}" class="text-xs"> </td>--}}
+{{--                            <td class="px-2 py-4 w-150"><input type="file" name="image" class="w-150 text-xs"></td>--}}
+{{--                            <td class="px-2 py-4 w-150"><input type="text" name="title" value="{{$value["title"]}}" class="text-xs"></td>--}}
+{{--                            <td class="px-2 py-8 w-full"><textarea  name="msg" class="w-full h-200 text-xs">{{$value["msg"]}}</textarea></td>--}}
+{{--                            <td class="px-2 py-4">--}}
+{{--                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>--}}
+{{--                                <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>--}}
+{{--                            </td>--}}
+{{--                        </form>--}}
+{{--                        <livewire:message-livewire :id="$value->id"></livewire:message-livewire>--}}
+{{--                    </tr>--}}
+{{--                @endforeach--}}
+{{--                </tbody>--}}
+            </table>
+        </section>
+
+        {{--Add product--}}
+        <section class="w-[90%] flexColumn gap-8">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">【募集職種・募集要項の追加 】</h2>
+            <form class="Form flexColumn gap-8" method="post" action="{{route("add-job_opening")}}" enctype="multipart/form-data">
+                @csrf
+                <div class="add_job_form grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊募集職種部門</label>
+                        <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="営業部門" required />
+                    </div>
+                    <div>
+                        <label for="job_target" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">募集対象</label>
+                        <input type="text" name="job_target" id="job_target" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="理系大学院生、理系学部生" />
+                    </div>
+                    <div>
+                        <label for="recruit_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">募集人数</label>
+                        <input type="text" name="recruit_number" id="recruit_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1~5名" />
+                    </div>
+                    <div>
+                        <label for="ideal_emp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">希望する人物像</label>
+                        <input type="text" name="ideal_emp" id="ideal_emp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="人と話をするのが好きな方" />
+                    </div>
+                    <div>
+                        <label for="info_title1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">募集職種1 タイトル</label>
+                        <input type="text" name="info_title1" id="info_title1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="機械設計" />
+                    </div>
+                    <div>
+                        <label for="info_content1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊募集職種1 内容</label>
+                        <input type="text" name="info_content1" id="info_content1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="顧客との打ち合わせ／工作機械・プラント等" />
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="add_job text-black bg-white hover:bg-black hover:text-white border-2 border-solid border-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-3 text-center"><i class="fa-solid fa-user-plus text-base"></i> 募集職種の追加</button>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-3 text-center">登録</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</x-dash-layout>
+
+<script>
+    // テーブルinput表示・非表示切り替え(eventFlagにはdiplay:node)
+
+    let editTr = document.getElementsByClassName("editTr");
+    let originalTr = document.getElementsByClassName("originalTr");
+    let editBtn = document.getElementsByClassName("editBtn");
+    let closeBtn = document.getElementsByClassName("closeBtn");
+
+    for(let i = 0;i<editTr.length;i++){
+        editTr[i].classList.add("eventFlag");
+
+        editBtn[i].addEventListener("click",function (){
+            editTr[i].classList.remove("eventFlag");
+            originalTr[i].classList.add("eventFlag");
+        })
+
+        closeBtn[i].addEventListener("click",function (){
+            originalTr[i].classList.remove("eventFlag");
+            editTr[i].classList.add("eventFlag");
+        })
+    }
+
+    // 募集職種追加
+
+    let add_job_btn = document.getElementsByClassName("add_job")[0];
+    let count = 1;
+
+    add_job_btn.addEventListener("click",function (){
+        count++;
+        let new_input_title = document.createElement("input");
+        let new_label_title = document.createElement("label");
+        let new_div_title = document.createElement("div");
+
+        new_label_title.innerText = "募集職種"+count +" タイトル";
+        new_label_title.classList.add("block","mb-2","text-sm","font-medium","text-gray-900","dark:text-white")
+        new_input_title.classList.add("bg-gray-50","border","border-gray-300","text-gray-900","text-sm","rounded-lg","focus:ring-blue-500","focus:border-blue-500","block","w-full","p-2.5","dark:bg-gray-700","dark:border-gray-600","dark:placeholder-gray-400","dark:text-white","dark:focus:ring-blue-500","dark:focus:border-blue-500")
+        new_input_title.setAttribute('name', 'info_title'+count);
+
+        new_div_title.appendChild(new_label_title);
+        new_div_title.appendChild(new_input_title);
+
+        let new_input_content = document.createElement("input");
+        let new_label_content = document.createElement("label");
+        let new_div_content = document.createElement("div");
+
+        new_label_content.innerText = "＊募集職種"+count +" 内容";
+        new_label_content.classList.add("block","mb-2","text-sm","font-medium","text-gray-900","dark:text-white")
+        new_input_content.classList.add("bg-gray-50","border","border-gray-300","text-gray-900","text-sm","rounded-lg","focus:ring-blue-500","focus:border-blue-500","block","w-full","p-2.5","dark:bg-gray-700","dark:border-gray-600","dark:placeholder-gray-400","dark:text-white","dark:focus:ring-blue-500","dark:focus:border-blue-500")
+        new_input_content.setAttribute('name', ' info_content'+count);
+
+        new_div_content.appendChild(new_label_content);
+        new_div_content.appendChild(new_input_content);
+
+        let add_job_form = document.getElementsByClassName("add_job_form")[0];
+        add_job_form.appendChild(new_div_title);
+        add_job_form.appendChild(new_div_content);
+    })
+
+</script>
