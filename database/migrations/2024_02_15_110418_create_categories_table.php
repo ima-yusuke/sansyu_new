@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Category;
 
 return new class extends Migration
 {
@@ -17,6 +18,14 @@ return new class extends Migration
             $table->timestamps();
 
         });
+
+        $initial_value =[
+            ["category_name"=>"インターンシップ情報"],
+            ["category_name"=>"説明会情報"]
+        ];
+
+        $save_initial_value =Category::insert($initial_value);
+
     }
 
     /**

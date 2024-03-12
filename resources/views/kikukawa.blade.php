@@ -71,23 +71,23 @@
         <section class="commonSectionStyles w-full">
             <div class="w-[90%] lg:w-[75%] md:events flexColumnCenter flex-wrap md:flex-row md:justify-between md:items-start gap-12 lg:gap-24">
                 @foreach($categories as $key=>$value)
-                    <article class="flexColumnCenter gap-9 shrink-0 w-full md:w-[45%]">
-                        <h3 class="text-base font-bold leading-7">
-                            @if(count($value->category)>0)
-                                {{$value["category_name"]}}
-                            @endif
-                        </h3>
+                    @if(count($value->category)>0)
+                        <article class="flexColumnCenter gap-9 shrink-0 w-full md:w-[45%]">
+                            <h3 class="text-base font-bold leading-7">
+                                    {{$value["category_name"]}}
+                            </h3>
 
-                        @foreach($value->category as $idx =>$val)
-                            <div class="flexBetween w-full self-stretch border border-solid border-titleBlack p-4 rounded-8 bg-white shadow-border">
-                                <aside class="flexColumn items-start gap-2">
-                                    <p class="text-xs font-normal">{{$val["date"]}}</p>
-                                    <p class="text-sm font-normal">{{$val["title"]}}</p>
-                                </aside>
-                                <div><i class="fa-solid fa-caret-right"></i></div>
-                            </div>
-                        @endforeach
-                    </article>
+                            @foreach($value->category as $idx =>$val)
+                                <div class="flexBetween w-full self-stretch border border-solid border-titleBlack p-4 rounded-8 bg-white shadow-border">
+                                    <aside class="flexColumn items-start gap-2">
+                                        <p class="text-xs font-normal">{{$val["date"]}}</p>
+                                        <p class="text-sm font-normal">{{$val["title"]}}</p>
+                                    </aside>
+                                    <div><i class="fa-solid fa-caret-right"></i></div>
+                                </div>
+                            @endforeach
+                        </article>
+                    @endif
                 @endforeach
             </div>
         </section>
@@ -356,7 +356,7 @@
                 @foreach($questions as $idx=>$values)
                     <article class="z-50 py-6 px-2 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shrink-0">
                         {{--質問--}}
-                        <div class="flex gap-x-4 lg:gap-x-10 ml-2 md:ml-4 lg:ml-8 questionTitle">
+                        <div class="flex gap-x-4 ml-2 md:ml-4 questionTitle">
                             <div class="flexCenter w-30 h-30 md:h-42 md:w-42 rounded-10 bg-questionIcon">
                                 <i class="fa-solid fa-chevron-down questionIcon"></i>
                             </div>
@@ -371,6 +371,19 @@
                         </div>
                     </article>
                 @endforeach
+
+{{--                <div class="qa">--}}
+{{--                    <ul class="qa__block w-[90%] lg:w-[85] mx-4 flexColumnCenter flex-wrap md:flex-row lg:justify-between md:items-start gap-4 z-50 pt-16">--}}
+{{--                        @foreach($questions as $idx=>$values)--}}
+{{--                            <li class="qa__item rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shadow-question border border-solid border-questionBorder z-50 py-6 px-2 flexColumn justify-center gap-6">--}}
+{{--                                <button class="qa__head js-ac">{{$values["question"]}}</button>--}}
+{{--                                <div class="qa__body">--}}
+{{--                                    <p>{{$values["answer"]}}</p>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
             </div>
         </section>
 

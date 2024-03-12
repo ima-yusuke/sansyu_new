@@ -57,10 +57,74 @@ html{
 }
 
 
-/*========[dashboard button]==============*/
+/*========[質問アコーディオンメニュー]==============*/
+.qa {
+    margin: 40px;
+}
+
+.qa__block {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 
+.qa__item {
+    display: inline-block;
+}
 
+.qa__head {
+    position: relative;
+    text-align: left;
+    padding: 20px 30px 20px 20px;
+    border-radius: 8px 8px 0 0;
+    background: white;
+    color: black;
+    cursor: pointer;
+    width: 100%;
+}
+
+.qa__head:after {
+    content: "";
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    transform: rotate(-135deg) translateY(9px);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transition: transform .4s;
+}
+
+.qa__body {
+    position: relative;
+    border-radius: 0 0 8px 8px;
+    background: #fff;
+    color: black;
+    border: transparent;
+    padding: 0 20px;
+    line-height: 0;
+    opacity: 0;
+    transition: line-height 0.4s, padding 0.4s, opacity 0.4s;
+}
+
+.qa__body.is-open {
+    padding: 20px;
+    line-height: 1.5;
+    opacity: 1;
+    border: 1px solid lightblue;
+
+}
+
+.qa__head.is-open::after {
+    transform: rotate(45deg) translateY(-10px);
+
+}
+
+.qa__item:not(:first-child) {
+    margin-top: 16px;
+}
 
 /*==========================================*/
 @layer components {
