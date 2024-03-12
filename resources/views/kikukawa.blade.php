@@ -59,7 +59,7 @@
                 </aside>
             </div>
             <div>
-                <img src="{{asset("img/kikukawaPic01.png")}}" class="max-w-full ml-auto pl-5 mt-60 md:mt-100 object-cover">
+                <img src="{{asset("img/kikukawaPic01.png")}}" class="max-w-full ml-auto pl-5 mt-60 md:mt-100 object-cover" alt="image">
             </div>
         </section>
 
@@ -94,7 +94,7 @@
 
         {{--会社紹介--}}
         <section id="about" class="flex flex-col-reverse gap-12 md:flexCenter py-24 lg:py-32 mx-4">
-            <img src="{{asset("img/kikukawaPic02.jpg")}}" class="rounded-15 shrink-0 object-cover md:w-[40%]">
+            <img src="{{asset("img/kikukawaPic02.jpg")}}" class="rounded-15 shrink-0 object-cover md:w-[40%]" alt="image">
             <article class="flexColumnCenter gap-12 md:w-[40%]">
                 <div class="flex flex-col items-start gap-9">
                     {{--タイトル--}}
@@ -132,7 +132,7 @@
                     <div class="flex items-start justify-center content-start gap-6 flex-wrap w-full">
                         @foreach($products as $key=>$value)
                             <aside class="shadow-item flexColumn items-center gap-2 pb-4 rounded-8 md:w-[48%] lg:w-[31.5%]">
-                                <img src="{{asset($value->path)}}" class="w-full h-full rounded-8 shrink-0 object-cover">
+                                <img src="{{asset($value->path)}}" class="w-full h-full rounded-8 shrink-0 object-cover" alt="image">
                                 <p>{{$value["p_name"]}}</p>
                             </aside>
                         @endforeach
@@ -161,9 +161,9 @@
                             <aside class="w-full md:w-auto">
                                 <div class="w-full md:w-270 md:h-330 flex justify-start items-start relative">
                                     <img src="{{asset($value["path"])}}"
-                                         class="rounded-8 w-full h-full object-cover">
+                                         class="rounded-8 w-full h-full object-cover" alt="image">
                                     <img src="{{asset("img/messageBg.jpg")}}"
-                                         class="bottom-5 left-0 right-0 m-auto m-0 absolute rounded-8">
+                                         class="bottom-5 left-0 right-0 m-auto m-0 absolute rounded-8" alt="image">
                                     <aside
                                         class="flexColumn items-center gap-px absolute left-0 right-0 m-0 m-auto bottom-12">
                                         @if($value["role"]!=null)
@@ -204,10 +204,10 @@
             {{--タイトル--}}
             <x-title>募集職種・募集要項</x-title>
 
-            <div class="flexColumnCenter md:flex-row md:flex-wrap lg:justify-between gap-y-14 lg:w-full lg:px-24">
+            <div class="flexColumnCenter md:flex-row md:flex-wrap items-start lg:justify-between gap-y-14 lg:w-full lg:px-24">
                 {{--各部門--}}
                 @foreach($job_recruits as $value)
-                    <article class="flexColumn items-start gap-2.5 relative {{isset($value["ideal_emp"])?'lg:h-600':'lg:h-230'}} w-11/12 lg:w-[47%] rounded-8 bg-white shadow-depart overflow-hidden">
+                    <article class="flexColumn items-start gap-2.5 relative  w-11/12 lg:w-[47%] rounded-8 bg-white shadow-depart overflow-hidden">
                         {{--背景ボール--}}
                         <div>
                             <div class="absolute lg:-top-10 -top-5 right-200 md:right-600 lg:right-410 w-275 h-277 rounded-277 bg-gradient-to-r from-departStart from-0% to-departEnd to-100%"></div>
@@ -334,7 +334,7 @@
                     <aside class="flexColumn items-start gap-4">
                         @foreach($recruit_documents as $value)
                             <div class="flex items-center gap-2.5">
-                                <img src="{{asset("img/kikukawaPic11.jpg")}}" class="w-20 h-20">
+                                <img src="{{asset("img/kikukawaPic11.jpg")}}" class="w-20 h-20" alt="image">
                                 <p class="font-medium">{{$value}}</p>
                             </div>
                         @endforeach
@@ -346,44 +346,27 @@
         {{--よくある質問--}}
         <section class="commonSectionStyles overflow-hidden relative w-full">
             {{--スクエア背景--}}
-            <div class="w-1820 h-507 opacity-50 absolute bottom-0 rotate-45 bg-gradient-to-r from-square from-7.08% to-headLinerEnd to-98.07% shrink-0"></div>
+            <div class="w-1820 h-507 opacity-50 absolute top-0 rotate-45 bg-gradient-to-r from-square from-7.08% to-headLinerEnd to-98.07% shrink-0"></div>
             {{--タイトル--}}
             <x-title>よくある質問</x-title>
             {{--コンテンツ--}}
             <div class="w-[90%] lg:w-[85] mx-4 flexColumnCenter flex-wrap md:flex-row lg:justify-between md:items-start gap-4 z-50 pt-16 overflow-hidden ">
-
-                {{--各質問--}}
                 @foreach($questions as $idx=>$values)
-                    <article class="z-50 py-6 px-2 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shrink-0">
+                    {{--各質問--}}
+                    <div class="qa__item z-50 py-6 px-2 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shrink-0">
                         {{--質問--}}
-                        <div class="flex gap-x-4 ml-2 md:ml-4 questionTitle">
+                        <div class="questionTitle qa__head js-ac flex items-center gap-4 ml-4">
                             <div class="flexCenter w-30 h-30 md:h-42 md:w-42 rounded-10 bg-questionIcon">
                                 <i class="fa-solid fa-chevron-down questionIcon"></i>
                             </div>
-                            <div class="flex items-center">
-                                <p class="text-xs md:text-base lg:text-lg font-bold leading-6 opacity-90">{{$values["question"]}}</p>
-                            </div>
+                            <p class="text-xs md:text-base lg:text-lg font-bold leading-6 opacity-90">{{$values["question"]}}</p>
                         </div>
-
                         {{--回答（最初非表示）--}}
-                        <div class="hidden flex justify-start questionDrop px-8">
-                            <p class="text-xs md:text-base leading-6 md:leading-7">{{$values["answer"]}}</p>
+                        <div class="qa__body">
+                            <p>{{$values["answer"]}}</p>
                         </div>
-                    </article>
+                    </div>
                 @endforeach
-
-{{--                <div class="qa">--}}
-{{--                    <ul class="qa__block w-[90%] lg:w-[85] mx-4 flexColumnCenter flex-wrap md:flex-row lg:justify-between md:items-start gap-4 z-50 pt-16">--}}
-{{--                        @foreach($questions as $idx=>$values)--}}
-{{--                            <li class="qa__item rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shadow-question border border-solid border-questionBorder z-50 py-6 px-2 flexColumn justify-center gap-6">--}}
-{{--                                <button class="qa__head js-ac">{{$values["question"]}}</button>--}}
-{{--                                <div class="qa__body">--}}
-{{--                                    <p>{{$values["answer"]}}</p>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                        @endforeach--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
             </div>
         </section>
 
