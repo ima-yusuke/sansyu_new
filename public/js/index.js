@@ -14,15 +14,15 @@ for(let i=0; i<dropboxTitles.length;i++){
             let dropboxText = document.getElementsByClassName("questionDrop");
             dropboxText[i].classList.remove("hidden");
 
-            // 高さ変更
-            dropboxTitles[i].parentNode.classList.remove("h-100");
+            // // 高さ変更
+            // dropboxTitles[i].parentNode.classList.remove("h-100");
 
             // 位置調整
             dropboxTitles[i].parentNode.style.justifyContent = "start";
-
-            // 余白
-            dropboxTitles[i].parentNode.style.paddingTop = 2+"%";
-            dropboxTitles[i].parentNode.style.paddingBottom = 4+"%";
+            //
+            // // 余白
+            // dropboxTitles[i].parentNode.style.paddingTop = 2+"%";
+            // dropboxTitles[i].parentNode.style.paddingBottom = 4+"%";
 
         }else{
             // アイコン変更
@@ -33,13 +33,13 @@ for(let i=0; i<dropboxTitles.length;i++){
             let dropboxText = document.getElementsByClassName("questionDrop");
             dropboxText[i].classList.add("hidden");
 
-            // 高さ変更
-            dropboxTitles[i].parentNode.style.height =null;
-            dropboxTitles[i].parentNode.classList.add("h-100");
+            // // 高さ変更
+            // dropboxTitles[i].parentNode.style.height =null;
+            // dropboxTitles[i].parentNode.classList.add("h-100");
 
-            // 余白削除
-            dropboxTitles[i].parentNode.style.paddingTop = 0;
-            dropboxTitles[i].parentNode.style.paddingBottom = 0;
+            // // 余白削除
+            // dropboxTitles[i].parentNode.style.paddingTop = 0;
+            // dropboxTitles[i].parentNode.style.paddingBottom = 0;
 
             // 位置調整
             dropboxTitles[i].parentNode.style.justifyContent = "center";

@@ -14,6 +14,7 @@ class Modal extends Component
 
     public function openModal($id){
         $this->selectedEmployee = Interview::find($id);
+
     }
 
     public function closeModal()

@@ -43,6 +43,14 @@
                 </a>
             </div>
             <div class="flexColumnCenter text-center border-4 border-solid border-black bg-white w-[30%]">
+                <a href="{{route("show-benefit")}}" class="w-full h-full hover:bg-black hover:text-white p-3">
+                    <div class="flexColumnCenter gap-4">
+                        <p><i class="fa-solid fa-house text-4xl"></i></p>
+                        <p class="font-bold">待遇・福利厚生</p>
+                    </div>
+                </a>
+            </div>
+            <div class="flexColumnCenter text-center border-4 border-solid border-black bg-white w-[30%]">
                 <a href="{{route("show-question")}}" class="w-full h-full hover:bg-black hover:text-white p-3">
                     <div class="flexColumnCenter gap-4">
                         <p><i class="fa-solid fa-question text-4xl"></i></p>

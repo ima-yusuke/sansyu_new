@@ -69,54 +69,26 @@
 
         {{--開催情報--}}
         <section class="commonSectionStyles w-full">
-            <?php
-                $tmpArray =[];
-
-                foreach($eventInfos as $key=>$value){
-                    //下記forループで初回はcountが0になるのを防ぐため
-                    if($tmpArray==null){
-                        array_push($tmpArray,["category"=>$value["category"],"categoryName"=>$value->events["category_name"]]);
-                        continue;
-                    };
-
-                    $flag = false;
-
-                    //重複してるかチェックし重複してたらflagをfalseへ
-                    for($i=0;$i<count($tmpArray);$i++){
-                        if($value["category"]!=$tmpArray[$i]["category"]){
-                           $flag=true;
-                        }else{
-                            $flag=false;
-                        }
-                    };
-
-                    //重複していなかったら（flagがtrueだったら）$tmpArrayに追加する
-                    if($flag==true){
-                        $newArray = ["category"=>$value["category"],"categoryName"=>$value->events["category_name"]];
-                        array_push($tmpArray,$newArray);
-                        $flag = false;
-                    }
-
-                };
-            ?>
-
             <div class="w-[90%] lg:w-[75%] md:events flexColumnCenter flex-wrap md:flex-row md:justify-between md:items-start gap-12 lg:gap-24">
-                @for($i=0;$i<count($tmpArray);$i++)
+                @foreach($categories as $key=>$value)
                     <article class="flexColumnCenter gap-9 shrink-0 w-full md:w-[45%]">
-                        <h3 class="text-base font-bold leading-7">{{$tmpArray[$i]["categoryName"]}}</h3>
-                        @foreach($eventInfos as $key=>$value)
-                            @if($value["category"]==$tmpArray[$i]["category"])
-                                <div class="flexBetween w-full self-stretch border border-solid border-titleBlack p-4 rounded-8 bg-white shadow-border">
-                                    <aside class="flexColumn items-start gap-2">
-                                        <p class="text-xs font-normal">{{$value["date"]}}</p>
-                                        <p class="text-sm font-normal">{{$value["title"]}}</p>
-                                    </aside>
-                                    <div><i class="fa-solid fa-caret-right"></i></div>
-                                </div>
+                        <h3 class="text-base font-bold leading-7">
+                            @if(count($value->category)>0)
+                                {{$value["category_name"]}}
                             @endif
+                        </h3>
+
+                        @foreach($value->category as $idx =>$val)
+                            <div class="flexBetween w-full self-stretch border border-solid border-titleBlack p-4 rounded-8 bg-white shadow-border">
+                                <aside class="flexColumn items-start gap-2">
+                                    <p class="text-xs font-normal">{{$val["date"]}}</p>
+                                    <p class="text-sm font-normal">{{$val["title"]}}</p>
+                                </aside>
+                                <div><i class="fa-solid fa-caret-right"></i></div>
+                            </div>
                         @endforeach
                     </article>
-                @endfor
+                @endforeach
             </div>
         </section>
 
@@ -232,10 +204,10 @@
             {{--タイトル--}}
             <x-title>募集職種・募集要項</x-title>
 
-            <div class="flexColumnCenter md:flex-row md:flex-wrap gap-14 w-full">
+            <div class="flexColumnCenter md:flex-row md:flex-wrap lg:justify-between gap-y-14 lg:w-full lg:px-24">
                 {{--各部門--}}
-                @foreach($job_type as $value)
-                    <article class="flexColumn items-start gap-2.5 relative {{isset($value["detail"])?'lg:h-600':'lg:h-230'}} w-11/12 lg:w-5/12 rounded-8 bg-white shadow-depart overflow-hidden">
+                @foreach($job_recruits as $value)
+                    <article class="flexColumn items-start gap-2.5 relative {{isset($value["ideal_emp"])?'lg:h-600':'lg:h-230'}} w-11/12 lg:w-[47%] rounded-8 bg-white shadow-depart overflow-hidden">
                         {{--背景ボール--}}
                         <div>
                             <div class="absolute lg:-top-10 -top-5 right-200 md:right-600 lg:right-410 w-275 h-277 rounded-277 bg-gradient-to-r from-departStart from-0% to-departEnd to-100%"></div>
@@ -245,30 +217,49 @@
                             <p class="text-profileName text-2xl font-bold opacity-90">{{$value["title"]}}</p>
                             <aside class="flex flex-col items-start gap-9">
                                 <div>
-                                    @foreach($value["info"] as $key=>$val)
+                                    @foreach($value->job_opening as $key=>$val)
                                         <aside class="md:text-base text-sm">
-                                            @if($key!="null")
-                                                <p>{{$key}}</p>
+                                            @if($val["job_title"]!=null)
+                                                <p>■{{$val["job_title"]}}</p>
                                             @endif
-                                            <p>{{$val}}</p>
+
+                                            @if($val["job_content"]!=null)
+                                                <p>{{$val["job_content"]}}</p>
+                                            @endif
                                         </aside>
                                     @endforeach
                                 </div>
 
                                 {{--募集人数などあれば表示、なければスキップ--}}
-                                @if(isset($value["detail"]))
-                                    <div class="flexColumn items-start gap-4 self-stretch">
-                                        @foreach($value["detail"] as $key=>$val)
-                                            <aside class="flexColumn items-start gap-2 self-stretch">
-                                                <div
-                                                    class="flex items-start gap-2.5 py-0.5 px-2 rounded-4 bg-titleBlack">
-                                                    <p class="text-white font-bold text-xs">{{$key}}</p>
-                                                </div>
-                                                <p class="md:text-base text-sm">{{$val}}</p>
-                                            </aside>
-                                        @endforeach
-                                    </div>
-                                @endif
+                                <div class="flexColumn items-start gap-4 self-stretch">
+                                    @if($value["job_target"]!=null)
+                                        <aside class="flexColumn items-start gap-2 self-stretch">
+                                            <div
+                                                class="flex items-start gap-2.5 py-0.5 px-2 rounded-4 bg-titleBlack">
+                                                <p class="text-white font-bold text-xs">募集対象</p>
+                                            </div>
+                                            <p class="md:text-base text-sm">{{$value["job_target"]}}</p>
+                                        </aside>
+                                     @endif
+                                    @if($value["recruit_number"]!=null)
+                                        <aside class="flexColumn items-start gap-2 self-stretch">
+                                            <div
+                                                class="flex items-start gap-2.5 py-0.5 px-2 rounded-4 bg-titleBlack">
+                                                <p class="text-white font-bold text-xs">募集人数</p>
+                                            </div>
+                                            <p class="md:text-base text-sm">{{$value["recruit_number"]}}</p>
+                                        </aside>
+                                    @endif
+                                    @if($value["ideal_emp"]!=null)
+                                        <aside class="flexColumn items-start gap-2 self-stretch">
+                                            <div
+                                                class="flex items-start gap-2.5 py-0.5 px-2 rounded-4 bg-titleBlack">
+                                                <p class="text-white font-bold text-xs">希望する人材像</p>
+                                            </div>
+                                            <p class="md:text-base text-sm">{{$value["ideal_emp"]}}</p>
+                                        </aside>
+                                    @endif
+                                </div>
                             </aside>
                         </div>
                     </article>
@@ -277,23 +268,28 @@
         </section>
 
         {{--待遇・福利厚生--}}
-        <section class="commonSectionStyles mx-4">
+        <section class="commonSectionStyles mx-4 w-full">
             {{--タイトル--}}
             <x-title>待遇・福利厚生</x-title>
             {{--コンテンツ--}}
-            <div class="flex flex-col gap-8 lg:mx-52">
-                {{--上部2つ記事--}}
-                <div class="flexColumn md:flex-row gap-8">
-                    {{--コントローラーから$benefits_Aを受取、それぞれをbenefitコンポーネントへ渡す--}}
-                    @for($i =0;$i<2;$i++)
-                        <x-benefit :benefit="$benefits_A[$i]"></x-benefit>
-                    @endfor
+            <div class="flex flex-col items-center gap-8">
+                <?php $counter =0; ?>
+                <div class="flexColumnCenter md:flex-row gap-8 md:w-full">
+                    @foreach($benefits as $key=>$value)
+                        <?php $counter++; ?>
+                        @if($counter<3)
+                            <x-benefit boxsize="big" :value="$value"></x-benefit>
+                        @endif
+                    @endforeach
                 </div>
-                {{--下部5つ記事--}}
-                <div class="flexColumn gap-8">
-                    @for($i =2;$i<count($benefits_A);$i++)
-                        <x-benefit :benefit="$benefits_A[$i]"></x-benefit>
-                    @endfor
+                <?php $counter =0; ?>
+                <div class="flexColumnCenter gap-8 md:w-full">
+                    @foreach($benefits as $key=>$value)
+                            <?php $counter++; ?>
+                        @if($counter>2)
+                            <x-benefit boxsize="small" :value="$value"></x-benefit>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -354,11 +350,11 @@
             {{--タイトル--}}
             <x-title>よくある質問</x-title>
             {{--コンテンツ--}}
-            <div class="w-[90%] lg:w-[85] mx-4 flexColumnCenter flex-wrap md:flex-row md:justify-between md:items-start gap-4 z-50 pt-16 overflow-hidden ">
+            <div class="w-[90%] lg:w-[85] mx-4 flexColumnCenter flex-wrap md:flex-row lg:justify-between md:items-start gap-4 z-50 pt-16 overflow-hidden ">
 
                 {{--各質問--}}
                 @foreach($questions as $idx=>$values)
-                    <article class="z-50 h-100 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shrink-0">
+                    <article class="z-50 py-6 px-2 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shrink-0">
                         {{--質問--}}
                         <div class="flex gap-x-4 lg:gap-x-10 ml-2 md:ml-4 lg:ml-8 questionTitle">
                             <div class="flexCenter w-30 h-30 md:h-42 md:w-42 rounded-10 bg-questionIcon">
@@ -403,7 +399,7 @@
 
             {{--下部--}}
             <article class="flexCenter h-100">
-                <p class="w-4/5 text-sm md:text-base text-center">Copyright (C) 2023 KIKUKAWA ENTERPRISE, INC. All
+                <p class="w-4/5 text-sm md:text-base text-center">Copyright &copy; 2023 KIKUKAWA ENTERPRISE, INC. All
                     Rights Reserved.</p>
             </article>
         </section>

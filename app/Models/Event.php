@@ -13,13 +13,13 @@ class Event extends Model
     protected $fillable =[
         "date",
         "title",
-        "category"
+        "category_id"
     ];
 
     public function events()
     {
 //        return $this->belongsTo(Category::class,"category","id");
-        return $this->belongsTo(Category::class,"category","id");
-
+//        return $this->belongsTo(Category::class,"category","id");
+        return $this->belongsTo(Category::class);
     }
 }

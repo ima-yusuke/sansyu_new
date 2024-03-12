@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\JobCategory;
+
 
 class JobOpening extends Model
 {
@@ -16,6 +18,10 @@ class JobOpening extends Model
         'ideal_emp'
     ];
 
+    public function job_opening()
+    {
+        return $this->hasMany(JobCategory::class);
+    }
 }
 
 

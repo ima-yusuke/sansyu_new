@@ -26,3 +26,20 @@
         <x-employeeModal :modalData="$selectedEmployee"></x-employeeModal>
     @endif
 </div>
+
+{{--スクロール連載防ぐためbodyにcss追加--}}
+
+{{--<script>--}}
+{{--    let test = document.getElementsByClassName("test2");--}}
+
+{{--    for(let i= 0; i<test.length;i++){--}}
+{{--        test[i].addEventListener("click",function (){--}}
+{{--            let body = document.getElementsByTagName("body")[0];--}}
+{{--            body.classList.add("test")--}}
+{{--        })--}}
+{{--    }--}}
+
+{{--</script>--}}
+
+
+

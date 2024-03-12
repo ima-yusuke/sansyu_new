@@ -7,56 +7,59 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr class="text-center">
                     <th scope="col" class="px-6 py-3">
-                        Event Name
+                        イベント名
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Date
+                        イベント開催日
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Category
+                        カテゴリー
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Edit
+                        編集
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Delete
+                        削除
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($eventData as $key=>$value)
+                @foreach($categories as $key=>$value)
                     {{--最初表示されるtr--}}
-                    <tr class="text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4">{{$value["title"]}} </td>
-                        <td class="px-6 py-4">{{$value["date"]}} </td>
-                        <td class="px-6 py-4">{{$value->events["category_name"]}} </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                        <livewire:event-livewire :id="$value->id"></livewire:event-livewire>
-                    </tr>
-
-                    {{--hidden (編集用tr)--}}
-                    <tr class="text-center editTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <form method="post" action="{{route('updateEvent',$value)}}">
-                            @csrf
-                            @method("patch")
-                            <td class="px-6 py-4"><input type="text" name="title" value="{{$value["title"]}}"> </td>
-                            <td class="px-6 py-4"><input type="date" name="date" value="{{$value["date"]}}"></td>
+                    @foreach($value->category as $idx=>$val)
+                        <tr class="text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4">{{$val["title"]}} </td>
+                            <td class="px-6 py-4">{{$val["date"]}} </td>
+                            <td class="px-6 py-4">{{$value["category_name"]}} </td>
                             <td class="px-6 py-4">
-                                <select name="category">
-                                    @foreach($categoryData as $val)
-                                        <option value="{{$val["id"]}}" @if($value["category"]== $val["id"]) selected @endif>{{$val["category_name"]}}</option>
-                                    @endforeach
-                                </select>
+                                <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
-                            <td class="px-6 py-4 gap-6">
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>
-                                <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>
-                            </td>
-                        </form>
-                        <livewire:event-livewire :id="$value->id"></livewire:event-livewire>
-                    </tr>
+                            <livewire:event-livewire :id="$val['id']"></livewire:event-livewire>
+                        </tr>
+
+
+                        {{--hidden (編集用tr)--}}
+                        <tr class="text-center editTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <form method="post" action="{{route('updateEvent',$val)}}">
+                                @csrf
+                                @method("patch")
+                                <td class="px-6 py-4"><input type="text" name="title" value="{{$val["title"]}}"> </td>
+                                <td class="px-6 py-4"><input type="date" name="date" value="{{$val["date"]}}"></td>
+                                <td class="px-6 py-4">
+                                    <select name="category_name">
+                                        @foreach($categories as $category_value)
+                                            <option value="{{$category_value["id"]}}" @if($val["category_id"]== $category_value["id"]) selected @endif>{{$category_value["category_name"]}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td class="px-6 py-4 gap-6">
+                                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>
+                                    <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>
+                                </td>
+                            </form>
+                            <livewire:event-livewire :id="$val['id']"></livewire:event-livewire>
+                        </tr>
+                    @endforeach
                 @endforeach
                 </tbody>
             </table>
@@ -84,19 +87,20 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 イベントの追加 】</h2>
             <form class="Form flexColumn gap-8" method="post" action="{{route("add-event")}}">
                 @csrf
+                <input type="hidden" name="id" value="{{$value["id"]}}">
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
-                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">タイトル</label>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊イベント名</label>
                         <input type="text" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="タイトル" required />
                     </div>
                     <div>
-                        <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">開催日</label>
+                        <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊イベント開催日</label>
                         <input type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                     <div>
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">イベントカテゴリー</label>
-                        <select name="category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            @foreach($categoryData as $val)
+                        <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊イベントカテゴリー</label>
+                        <select name="category_id" id="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            @foreach($categories as $val)
                                 <option value="{{$val["id"]}}">{{$val["category_name"]}}</option>
                             @endforeach
                         </select>

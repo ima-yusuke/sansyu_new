@@ -27,11 +27,10 @@ Route::get('/dashboard-main', [\App\Http\Controllers\kikukawaController::class,"
 Route::get('/dashboard-user', [\App\Http\Controllers\kikukawaController::class,"dashboardUser"])->name('dashboardUser');
 
 //Event
-Route::post("/dashboard/add-event",[\App\Http\Controllers\kikukawaController::class,"addEvent"])->name("add-event");
-Route::post("/dashboard/add-category",[\App\Http\Controllers\kikukawaController::class,"addCategory"])->name("add-category");
-Route::get("/dashboard/show-event",[\App\Http\Controllers\kikukawaController::class,"showEvent"])->name("show-event");
-Route::get("/dashboard/show-event",[\App\Http\Controllers\kikukawaController::class,"getAllData"])->name("show-event");
-Route::patch('/dashboard/show-event{event}', [\App\Http\Controllers\kikukawaController::class,"updateEvent"])->name('updateEvent');
+Route::get("/dashboard/show-event",[\App\Http\Controllers\dashEvent::class,"showEvent"])->name("show-event");
+Route::post("/dashboard/add-event",[\App\Http\Controllers\dashEvent::class,"addEvent"])->name("add-event");
+Route::post("/dashboard/add-category",[\App\Http\Controllers\dashEvent::class,"addCategory"])->name("add-category");
+Route::patch('/dashboard/show-event{event}', [\App\Http\Controllers\dashEvent::class,"updateEvent"])->name('updateEvent');
 
 //Product
 Route::get("/dashboard/show-product",[\App\Http\Controllers\dashProduct::class,"showProductPage"])->name("show-product");
@@ -51,7 +50,12 @@ Route::patch('/dashboard/show-interview{interview}', [\App\Http\Controllers\dash
 //Job Opening
 Route::get("/dashboard/show-job_opening",[\App\Http\Controllers\dashJobOpening::class,"showJobOpeningPage"])->name("show-job_opening");
 Route::post("/dashboard/add-add-job_opening",[\App\Http\Controllers\dashJobOpening::class,"addJobOpening"])->name("add-job_opening");
-Route::patch('/dashboard/show-interview{interview}', [\App\Http\Controllers\dashInterview::class,"updateInterview"])->name('update-interview');
+Route::patch('/dashboard/show-job_opening{job_opening}', [\App\Http\Controllers\dashJobOpening::class,"updateJobOpening"])->name('update-job_opening');
+
+//Benefit
+Route::get("/dashboard/show-benefit",[\App\Http\Controllers\dashBenefit::class,"showBenefitPage"])->name("show-benefit");
+Route::post("/dashboard/add-add-benefit",[\App\Http\Controllers\dashBenefit::class,"addBenefit"])->name("add-benefit");
+Route::patch('/dashboard/show-benefit{benefit}', [\App\Http\Controllers\dashBenefit::class,"updateBenefit"])->name('update-benefit');
 
 //Question
 Route::get("/dashboard/show-question",[\App\Http\Controllers\dashQuestion::class,"showQuestionPage"])->name("show-question");

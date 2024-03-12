@@ -139,15 +139,15 @@
                 @csrf
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">氏名</label>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊氏名</label>
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="山田　太郎" required />
                     </div>
                     <div>
-                        <label for="hire_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">入社年</label>
+                        <label for="hire_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊入社年</label>
                         <input type="text" name="hire_year" id="hire_year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2023年" required />
                     </div>
                     <div>
-                        <label for="school" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">最終学歴</label>
+                        <label for="school" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊最終学歴</label>
                         <input type="text" name="school" id="school" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="〇〇大学" required />
                     </div>
                     <div>
@@ -159,52 +159,52 @@
                         <input type="text" name="faculty" id="faculty" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="〇〇学科" />
                     </div>
                     <div>
-                        <label for="job_dpt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">職種</label>
+                        <label for="job_dpt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊職種</label>
                         <input type="text" name="job_dpt" id="job_dpt" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="開発設計部　電気設計" required />
                     </div>
                     <div>
-                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">タイトル</label>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊タイトル</label>
                         <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                     <br>
                     <div>
-                        <label for="question_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">入社へのきっかけ、決め手は？</label>
+                        <label for="question_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊入社へのきっかけ、決め手は？</label>
                         <textarea name="question_1" id="question_1" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ></textarea>
                     </div>
                     <div>
-                        <label for="question_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">仕事のやりがいを感じるとき</label>
+                        <label for="question_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊仕事のやりがいを感じるとき</label>
                         <textarea name="question_2" id="question_2" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required></textarea>
                     </div>
                     <div>
-                        <label for="question_3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">日々、意識していること</label>
+                        <label for="question_3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊日々、意識していること</label>
                         <textarea name="question_3" id="question_3" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required></textarea>
                     </div>
                     <div>
-                        <label for="question_4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">今後の目標</label>
+                        <label for="question_4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊今後の目標</label>
                         <textarea name="question_4" id="question_4" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required></textarea>
                     </div>
                     <div>
-                        <label for="question_5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">就職活動中の皆さんへ</label>
+                        <label for="question_5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊就職活動中の皆さんへ</label>
                         <textarea name="question_5" id="question_5" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ></textarea>
                     </div>
                     <div>
-                        <label for="question_6" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ある1日のスケジュール</label>
+                        <label for="question_6" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊ある1日のスケジュール</label>
                         <textarea name="question_6" id="question_6" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ></textarea>
                     </div>
                     <div>
-                        <label for="question_7" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">キャリアパス</label>
+                        <label for="question_7" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊キャリアパス</label>
                         <textarea name="question_7" id="question_7" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ></textarea>
                     </div>
                     <div>
-                        <label for="question_8" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">休日の過ごし方</label>
+                        <label for="question_8" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊休日の過ごし方</label>
                         <textarea name="question_8" id="question_8" class="h-150 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ></textarea>
                     </div>
                     <div>
-                        <label for="path_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">プロフィール画像①</label>
+                        <label for="path_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊プロフィール画像①</label>
                         <input type="file" name="path_1" id="path_1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                     <div>
-                        <label for="path_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">プロフィール画像②</label>
+                        <label for="path_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊プロフィール画像②</label>
                         <input type="file" name="path_2" id="path_2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>

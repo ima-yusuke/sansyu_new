@@ -38,15 +38,19 @@ class dashProduct extends Controller
 
     public function updateProduct(Request $request, Product $product)
     {
+        $file_name =null;
 
-        // アップロードされたファイル名を取得
-        $file_name = $request->file('image')->getClientOriginalName();
-
-        $request->file('image')->storeAs('public/img', $file_name);
+        if($request->image!=null){
+            $file_name = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/img', $file_name);
+            $file_name = 'storage/img/'.$file_name;
+        }else{
+            $file_name = $product->path;
+        }
 
         $product->update([
             "p_name" => $request->p_name,
-            "path" => 'storage/img/'.$file_name,
+            "path" => $file_name,
         ]);
 
         return redirect()->route('show-product');
