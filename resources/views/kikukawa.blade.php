@@ -204,7 +204,7 @@
             {{--タイトル--}}
             <x-title>募集職種・募集要項</x-title>
 
-            <div class="flexColumnCenter md:flex-row md:flex-wrap items-start lg:justify-between gap-y-14 lg:w-full lg:px-24">
+            <div class="flexColumnCenter md:flex-row md:flex-wrap md:items-start lg:justify-between gap-y-14 lg:w-full lg:px-24">
                 {{--各部門--}}
                 @foreach($job_recruits as $value)
                     <article class="flexColumn items-start gap-2.5 relative  w-11/12 lg:w-[47%] rounded-8 bg-white shadow-depart overflow-hidden">
@@ -272,23 +272,11 @@
             {{--タイトル--}}
             <x-title>待遇・福利厚生</x-title>
             {{--コンテンツ--}}
-            <div class="flex flex-col items-center gap-8">
+            <div class="flex flex-col items-center gap-8 md:w-[90%]">
                 <?php $counter =0; ?>
-                <div class="flexColumnCenter md:flex-row gap-8 md:w-full">
+                <div class="flexColumnCenter md:flex-row md:items-start md:justify-between flex-wrap gap-y-8">
                     @foreach($benefits as $key=>$value)
-                        <?php $counter++; ?>
-                        @if($counter<3)
-                            <x-benefit boxsize="big" :value="$value"></x-benefit>
-                        @endif
-                    @endforeach
-                </div>
-                <?php $counter =0; ?>
-                <div class="flexColumnCenter gap-8 md:w-full">
-                    @foreach($benefits as $key=>$value)
-                            <?php $counter++; ?>
-                        @if($counter>2)
-                            <x-benefit boxsize="small" :value="$value"></x-benefit>
-                        @endif
+                        <x-benefit :value="$value"></x-benefit>
                     @endforeach
                 </div>
             </div>

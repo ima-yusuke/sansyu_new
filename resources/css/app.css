@@ -9,6 +9,10 @@ html{
     height: 100%;
 }
 
+button,a{
+    cursor: pointer;
+}
+
 .test{
     position: fixed;
     overflow: hidden;
@@ -83,8 +87,6 @@ html{
 .qa__head.is-open::after {
     transform: rotate(45deg) translateY(-10px);
 }
-
-
 
 /*==========================================*/
 @layer components {

@@ -111,7 +111,7 @@
                 @csrf
                 <div class="add_job_form grid gap-6 mb-6 md:grid-cols-2">
                     <div>
-                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊タイトル</label>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> タイトル</label>
                         <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="給与" required />
                     </div>
                     <br>
@@ -120,7 +120,7 @@
                         <input type="text" name="info_title1" id="info_title1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="【正社員】営業職（国内）" />
                     </div>
                     <div>
-                        <label for="info_content1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊内容1</label>
+                        <label for="info_content1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> 内容1</label>
                         <textarea name="info_content1" id="info_content1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="月給：256,812円（一律手当含む）" required ></textarea>
                     </div>
                 </div>

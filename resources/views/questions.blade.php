@@ -58,11 +58,11 @@
                 @csrf
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
-                        <label for="question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊質問</label>
+                        <label for="question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> 質問</label>
                         <input type="text" name="question" id="question" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="質問" required />
                     </div>
                     <div>
-                        <label for="answer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">＊回答</label>
+                        <label for="answer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> 回答</label>
                         <textarea name="answer" id="answer" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="回答" required ></textarea>
                     </div>
                 </div>

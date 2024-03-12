@@ -2,17 +2,17 @@
 <div class="flexCenter fixed left-0 top-0 z-100 min-h-screen w-full bg-black/85 px-4">
 
     {{--Modal親タグ (背景色/白色)--}}
-    <div class="fixed overscroll-y-contain overflow-y-scroll bg-white w-full h-[90vh] md:h-[70vh] md:mb-64 lg:mb-8 lg:h-[90vh] md:w-85% lg:w-8/12 max-w-screen-lg rounded-[20px] md:px-8 lg:my-12 text-center">
+    <div class="relative overscroll-y-contain overflow-y-scroll bg-white w-full h-[90vh] md:h-[70vh] md:mb-64 lg:mb-8 lg:h-[90vh] md:w-85% lg:w-8/12 max-w-screen-lg rounded-[20px] md:px-8 lg:my-12 text-center">
         <!-- Modal content -->
         <div class="overflow-scroll flexColumnCenter p-6">
 
                 {{--Modal header--}}
-                <div class="ml-auto">
+                <div class="ml-0 fixed top-53 right-20 lg:right-260 z-100">
                     <button wire:click="closeModal()" class="ml-auto"><i class="fa-solid fa-xmark text-4xl font-bold"></i></button>
                 </div>
 
                 {{--Modal body--}}
-                <div class="w-full">
+                <div class="w-full pt-4">
 
                     {{--トップ画像--}}
                     <div class="w-full relative">
