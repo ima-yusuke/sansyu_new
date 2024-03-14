@@ -50,14 +50,5 @@ class kikukawaController extends Controller
         return view("kikukawa", compact("categories", "products", "messages", "recruit_flow", "recruit_documents", "questions", "interviews", "job_recruits", "benefits"));
     }
 
-    public function dashboardMain()
-    {
-        return view("dashboard-main");
-    }
-
-    public function dashboardUser()
-    {
-        return view("dashboard-user");
-    }
 }
 

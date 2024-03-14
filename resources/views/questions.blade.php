@@ -23,25 +23,30 @@
                 <tbody>
                 @foreach($questions as $key=>$value)
                     {{--最初表示されるtr--}}
-                    <tr class="originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4 w-[30%]">{{$value["question"]}} </td>
-                        <td class="px-6 py-4 w-[60%]">{{$value["answer"]}} </td>
-                        <td class="px-6 py-4 w-42">
-                            <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <tr class="h-120 originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4 w-[30%]">
+                            <div class="flexCenter">{{$value["question"]}} </div>
+                        </td>
+                        <td class="px-6 py-4 w-[50%]">
+                            <div class="flexCenter">{{$value["answer"]}}</div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flexCenter">
+                                <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                            </div>
                         </td>
                         <livewire:question-livewire :id="$value->id"></livewire:question-livewire>
                     </tr>
 
                     {{--hidden (編集用tr)--}}
-                    <tr class="editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="h-120 editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <form method="post" action="{{route('update-question',$value)}}" enctype="multipart/form-data">
                             @csrf
                             @method("patch")
-                            <td class="px-2 py-4 w-[30%]"><input type="text" name="question" value="{{$value["question"]}}" class="w-full text-xs"> </td>
-                            <td class="px-2 py-8 w-[60%]"><textarea name="answer" class="w-[90%] h-200 text-xs">{{$value["answer"]}}</textarea></td>
+                            <td class="px-2 py-4 w-[30%]"><input type="text" name="question" value="{{$value["question"]}}" class="w-full text-xs text-dashInputColor"> </td>
+                            <td class="px-2 py-4 w-[50%]"><textarea name="answer" class="w-[90%] h-100 text-xs text-dashInputColor">{{$value["answer"]}}</textarea></td>
                             <td class="px-2 py-4">
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>
-                                <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>
+                                <x-dashboard_btn></x-dashboard_btn>
                             </td>
                         </form>
                         <livewire:question-livewire :id="$value->id"></livewire:question-livewire>
@@ -76,24 +81,12 @@
 
 <script>
     // テーブルinput表示・非表示切り替え(eventFlagにはdiplay:node)
-
     let editTr = document.getElementsByClassName("editTr");
     let originalTr = document.getElementsByClassName("originalTr");
     let editBtn = document.getElementsByClassName("editBtn");
     let closeBtn = document.getElementsByClassName("closeBtn");
 
     for(let i = 0;i<editTr.length;i++){
-        editTr[i].classList.add("eventFlag");
-
-        editBtn[i].addEventListener("click",function (){
-            editTr[i].classList.remove("eventFlag");
-            originalTr[i].classList.add("eventFlag");
-        })
-
-        closeBtn[i].addEventListener("click",function (){
-            originalTr[i].classList.remove("eventFlag");
-            editTr[i].classList.add("eventFlag");
-        })
+        dashTrToggle(i)
     }
-
 </script>

@@ -60,8 +60,10 @@
                     <tbody>
                     @foreach($interviews as $key=>$value)
                         {{-- 最初表示されるtr--}}
-                        <tr class="text-xs originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="text-center px-6 py-4 w-[5%] ">{{$value["name"]}} </td>
+                        <tr class="h-200 text-xs originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="text-center px-6 py-4 w-[5%] ">
+                                <div class="flexCenter">{{$value["name"]}}</div>
+                            </td>
                             <td class="text-center px-2 py-4 w-100">
                                 <img src="{{asset($value->path_1)}}" class="rounded-8 shrink-0 object-cover">
                             </td>
@@ -77,50 +79,95 @@
                                 <p>{{$value["hire_year"]}}入社</p>
                                 <p>{{$value["job_dpt"]}}</p>
                             </td>
-                            <td class="px-2 py-4 whitespace-normal">{{$value["title"]}} </td>
-                            <td class="px-2 py-4 whitespace-normal">{{$value["question_1"]}}</td>
-                            <td class="px-2 py-4 whitespace-normal">{{$value["question_2"]}}</td>
-                            <td class="px-2 py-4 whitespace-normal">{{$value["question_3"]}}</td>
-                            <td class="px-2 py-4 whitespace-normal">{{$value["question_4"]}}</td>
-                            <td class="px-2 py-4 whitespace-normal">{{$value["question_5"]}}</td>
-                            <td class="px-2 py-4 whitespace-pre">{{$value["question_6"]}}</td>
-                            <td class="px-2 py-4 whitespace-pre">{{$value["question_7"]}}</td>
-                            <td class="px-2 py-4 whitespace-normal">{{$value["question_8"]}}</td>
+                            <td class="px-2 py-4 whitespace-normal">
+                                <div class="flexCenter">{{$value["title"]}} </div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-normal">
+                                <div class="flexCenter">{{$value["question_1"]}}</div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-normal">
+                                <div class="flexCenter">{{$value["question_2"]}}</div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-normal">
+                                <div class="flexCenter">{{$value["question_3"]}}</div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-normal">
+                                <div class="flexCenter">{{$value["question_4"]}}</div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-normal">
+                                <div class="flexCenter">{{$value["question_5"]}}</div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-pre">
+                                <div class="flexCenter">{{$value["question_6"]}}</div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-pre">
+                                <div class="flexCenter">{{$value["question_7"]}}</div>
+                            </td>
+                            <td class="px-2 py-4 whitespace-normal">
+                                <div class="flexCenter">{{$value["question_8"]}}</div>
+                            </td>
                             <td class="px-6 py-4">
-                                <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <div class="flexCenter">
+                                    <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                                </div>
                             </td>
                             <livewire:interview-livewire :id="$value->id"></livewire:interview-livewire>
                         </tr>
 
                         {{--hidden (編集用tr)--}}
-                        <tr class="editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-200 editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <form method="post" action="{{route('update-interview',$value)}}" enctype="multipart/form-data">
                                 @csrf
                                 @method("patch")
-                                <td class="px-6 py-4"><input class="text-xs" type="text" name="name" value="{{$value["name"]}}"></td>
-                                <td class="px-6 py-4"><input class="text-xs" type="file" name="path_1"></td>
-                                <td class="px-6 py-4"><input class="text-xs" type="file" name="path_2"></td>
+                                <td class="px-6 py-4"><input class="text-xs text-dashInputColor" type="text" name="name" value="{{$value["name"]}}"></td>
                                 <td class="px-6 py-4">
-                                    <p class="my-2"><input class="text-xs" type="text" name="school" value="{{$value["school"]}}"></p>
-                                    <p class="my-2"><input class="text-xs" type="text" name="department" value="{{$value["department"]!=null?$value["department"]:null}}" placeholder="〇〇学部"></p>
-                                    <p><input class="text-xs" type="text" name="faculty" value="{{$value["faculty"]!=null?$value["faculty"]:null}}" placeholder="〇〇学科"></p>
+                                    <div class="flexColumnCenter gap-2">
+                                        <label class="py-2 px-4 bg-black hover:cursor-pointer">
+                                            <input type="file" name="path_1" class="imgInput hidden">
+                                            <i class="iconDefault fa-solid fa-file-arrow-up text-white"></i>
+                                            <i class="iconHidden hidden fa-regular fa-circle-check text-white"></i>
+                                            <span class="fileSpan text-white">ファイル選択</span>
+                                        </label>
+                                        <div class="flexColumnCenter">
+                                            <img src="{{asset($value->path_1)}}" class="rounded-8 shrink-0 object-cover">
+                                            <p class="text-xs">※現在の画像</p>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="my-2"><input class="text-xs" type="text" name="hire_year" value="{{$value["hire_year"]}}"></p>
-                                    <p><input class="text-xs" type="text" name="job_dpt" value="{{$value["job_dpt"]}}"></p>
+                                    <div class="flexColumnCenter gap-2">
+                                        <label class="py-2 px-4 bg-black hover:cursor-pointer">
+                                            <input type="file" name="path_2" class="imgInput hidden">
+                                            <i class="iconDefault fa-solid fa-file-arrow-up text-white"></i>
+                                            <i class="iconHidden hidden fa-regular fa-circle-check text-white"></i>
+                                            <span class="fileSpan text-white">ファイル選択</span>
+                                        </label>
+                                        <div class="flexColumnCenter">
+                                            <img src="{{asset($value->path_2)}}" class="rounded-8 shrink-0 object-cover">
+                                            <p class="text-xs">※現在の画像</p>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td class="px-6 py-4 w-full"><textarea name="title" class="w-full h-200 text-xs">{{$value["title"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_1" class="w-full h-200 text-xs">{{$value["question_1"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_2" class="w-full h-200 text-xs">{{$value["question_2"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_3" class="w-full h-200 text-xs">{{$value["question_3"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_4" class="w-full h-200 text-xs">{{$value["question_4"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_5" class="w-full h-200 text-xs">{{$value["question_5"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_6" class="w-full h-200 text-xs">{{$value["question_6"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_7" class="w-full h-200 text-xs">{{$value["question_7"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_8" class="w-full h-200 text-xs">{{$value["question_8"]}}</textarea></td>
                                 <td class="px-6 py-4">
-                                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>
-                                    <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>
+                                    <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="school" value="{{$value["school"]}}"></p>
+                                    <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="department" value="{{$value["department"]!=null?$value["department"]:null}}" placeholder="〇〇学部"></p>
+                                    <p><input class="text-xs text-dashInputColor" type="text" name="faculty" value="{{$value["faculty"]!=null?$value["faculty"]:null}}" placeholder="〇〇学科"></p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="hire_year" value="{{$value["hire_year"]}}"></p>
+                                    <p><input class="text-xs text-dashInputColor" type="text" name="job_dpt" value="{{$value["job_dpt"]}}"></p>
+                                </td>
+                                <td class="px-6 py-4 w-full"><textarea name="title" class="w-full h-200 text-xs text-dashInputColor">{{$value["title"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_1" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_1"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_2" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_2"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_3" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_3"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_4" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_4"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_5" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_5"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_6" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_6"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_7" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_7"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_8" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_8"]}}</textarea></td>
+                                <td class="px-6 py-4">
+                                    <x-dashboard_btn></x-dashboard_btn>
                                 </td>
                             </form>
                             <livewire:interview-livewire :id="$value->id"></livewire:interview-livewire>
@@ -201,11 +248,11 @@
                     </div>
                     <div>
                         <label for="path_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> プロフィール画像①</label>
-                        <input type="file" name="path_1" id="path_1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <input type="file" name="path_1" id="path_1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                     <div>
                         <label for="path_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> プロフィール画像②</label>
-                        <input type="file" name="path_2" id="path_2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <input type="file" name="path_2" id="path_2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>
                 <div class="flex justify-center">
@@ -218,24 +265,24 @@
 
 <script>
     // テーブルinput表示・非表示切り替え(eventFlagにはdiplay:node)
-
     let editTr = document.getElementsByClassName("editTr");
     let originalTr = document.getElementsByClassName("originalTr");
     let editBtn = document.getElementsByClassName("editBtn");
     let closeBtn = document.getElementsByClassName("closeBtn");
 
     for(let i = 0;i<editTr.length;i++){
-        editTr[i].classList.add("eventFlag");
+        dashTrToggle(i)
+    }
 
-        editBtn[i].addEventListener("click",function (){
-            editTr[i].classList.remove("eventFlag");
-            originalTr[i].classList.add("eventFlag");
-        })
+    // inputファイルのデザイン変更
+    let imgInput = document.getElementsByClassName("imgInput");
+    let fileSpan = document.getElementsByClassName("fileSpan");
+    let iconHidden = document.getElementsByClassName("iconHidden");
+    let iconDefault = document.getElementsByClassName("iconDefault");
 
-        closeBtn[i].addEventListener("click",function (){
-            originalTr[i].classList.remove("eventFlag");
-            editTr[i].classList.add("eventFlag");
-        })
+    for(let i = 0;i<imgInput.length;i++){
+        resetTwoInputValue(i)
+        uploadFile(i)
     }
 
 </script>

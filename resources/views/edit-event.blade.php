@@ -27,34 +27,35 @@
                 @foreach($categories as $key=>$value)
                     {{--最初表示されるtr--}}
                     @foreach($value->category as $idx=>$val)
-                        <tr class="text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-16 text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">{{$val["title"]}} </td>
                             <td class="px-6 py-4">{{$val["date"]}} </td>
                             <td class="px-6 py-4">{{$value["category_name"]}} </td>
                             <td class="px-6 py-4">
-                                <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <div class="flexCenter">
+                                    <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                                </div>
                             </td>
                             <livewire:event-livewire :id="$val['id']"></livewire:event-livewire>
                         </tr>
 
 
                         {{--hidden (編集用tr)--}}
-                        <tr class="text-center editTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-16 text-center editTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <form method="post" action="{{route('updateEvent',$val)}}">
                                 @csrf
                                 @method("patch")
-                                <td class="px-6 py-4"><input type="text" name="title" value="{{$val["title"]}}"> </td>
-                                <td class="px-6 py-4"><input type="date" name="date" value="{{$val["date"]}}"></td>
+                                <td class="px-6 py-4"><input type="text" name="title" value="{{$val["title"]}}" class="text-sm text-dashInputColor"> </td>
+                                <td class="px-6 py-4"><input type="date" name="date" value="{{$val["date"]}}" class="text-sm text-dashInputColor"></td>
                                 <td class="px-6 py-4">
-                                    <select name="category_name">
+                                    <select name="category_name" class="text-sm text-dashInputColor">
                                         @foreach($categories as $category_value)
-                                            <option value="{{$category_value["id"]}}" @if($val["category_id"]== $category_value["id"]) selected @endif>{{$category_value["category_name"]}}</option>
+                                            <option class="text-sm" value="{{$category_value["id"]}}" @if($val["category_id"]== $category_value["id"]) selected @endif>{{$category_value["category_name"]}}</option>
                                         @endforeach
                                     </select>
                                 </td>
                                 <td class="px-6 py-4 gap-6">
-                                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>
-                                    <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>
+                                    <x-dashboard_btn></x-dashboard_btn>
                                 </td>
                             </form>
                             <livewire:event-livewire :id="$val['id']"></livewire:event-livewire>
@@ -118,24 +119,13 @@
 
 <script>
     // テーブルinput表示・非表示切り替え(eventFlagにはdiplay:node)
-
     let editTr = document.getElementsByClassName("editTr");
     let originalTr = document.getElementsByClassName("originalTr");
     let editBtn = document.getElementsByClassName("editBtn");
     let closeBtn = document.getElementsByClassName("closeBtn");
 
     for(let i = 0;i<editTr.length;i++){
-        editTr[i].classList.add("eventFlag");
-
-        editBtn[i].addEventListener("click",function (){
-            editTr[i].classList.remove("eventFlag");
-            originalTr[i].classList.add("eventFlag");
-        })
-
-        closeBtn[i].addEventListener("click",function (){
-            originalTr[i].classList.remove("eventFlag");
-            editTr[i].classList.add("eventFlag");
-        })
+        dashTrToggle(i)
     }
 
 </script>

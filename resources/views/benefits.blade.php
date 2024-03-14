@@ -15,7 +15,7 @@
                             <th scope="col" class="px-16 py-3">
                                 タイトル{{$i}}
                             </th>
-                            <th scope="col" class="px-24 py-3">
+                            <th scope="col" class="px-36 py-3">
                                 コンテンツ{{$i}}
                             </th>
                         @endfor
@@ -30,69 +30,76 @@
                     <tbody>
                     @foreach($benefits as $key=>$value)
                         {{--最初表示されるtr--}}
-                        <tr class="originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4">{{$value["title"]}} </td>
+                        <tr class="h-150 originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4">
+                                <div class="flexCenter">{{$value["title"]}}</div>
+                            </td>
 
                             <?php  $count=0;  ?>
                             @foreach($value->benefit as $idx=>$val)
                                 <?php $count++; ?>
                                 @if($val["benefit_title"]!=null)
-                                    <td class="px-6 py-4 w-150">{{$val["benefit_title"]}} </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flexCenter">{{$val["benefit_title"]}} </div>
+                                    </td>
                                 @else
-                                    <td class="px-6 py-4 w-150">-</td>
+                                    <td class="px-6 py-4"><div class="flexCenter">-</div></td>
                                 @endif
 
                                 @if($val["benefit_content"]!=null)
-                                    <td class="px-6 py-4 whitespace-normal">{{$val["benefit_content"]}} </td>
+                                    <td class="px-6 py-4 whitespace-normal">
+                                        <div class="flexCenter">{{$val["benefit_content"]}}</div>
+                                    </td>
                                 @else
-                                    <td class="px-6 py-4 w-150">-</td>
+                                    <td class="px-6 py-4"><div class="flexCenter">-</div></td>
                                 @endif
                             @endforeach
 
                             {{--空欄埋めるための空っぽのtd作成--}}
                             @for($i=$count;$i<$tmp_column_count;$i++)
-                                <td class="px-6 py-4 w-150">-</td>
-                                <td class="px-6 py-4 w-150">-</td>
+                                <td class="px-6 py-4"><div class="flexCenter">-</div></td>
+                                <td class="px-6 py-4"><div class="flexCenter">-</div></td>
                             @endfor
 
                             <td class="px-6 py-4 w-42">
-                                <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <div class="flexCenter">
+                                    <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                                </div>
                             </td>
                             <livewire:benefit-livewire :id="$value->id" :benefit_id="$value->benefit[0]['benefit_id']"></livewire:benefit-livewire>
                         </tr>
 
                         {{--hidden (編集用tr)--}}
-                        <tr class="editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-150 editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <form method="post" action="{{route('update-benefit',$value)}}" enctype="multipart/form-data">
                                 @csrf
                                 @method("patch")
                                 <input type="hidden" value="{{$value->benefit[0]["benefit_id"]}}" name="benefit_id">
                                 <input type="hidden" value="{{$value["id"]}}" name="id">
-                                <td class="px-2 py-4 w-150"><input type="text" name="title" value="{{$value["title"]}}" class="text-xs"></td>
+                                <td class="px-2 py-4"><input type="text" name="title" value="{{$value["title"]}}" class="w-full text-xs text-dashInputColor"></td>
                                 <?php  $count=0;  ?>
                                 @foreach($value->benefit as $idx=>$val)
                                         <?php $count++; ?>
                                     @if($val["benefit_title"]!=null)
-                                        <td class="px-6 py-4 w-150"><input type="text" name="info_title{{$count}}" value="{{$val["benefit_title"]}}" class="text-xs"></td>
+                                        <td class="px-6 py-4 "><input type="text" name="info_title{{$count}}" value="{{$val["benefit_title"]}}" class="w-full text-xs text-dashInputColor"></td>
                                     @else
-                                        <td class="px-6 py-4 w-150"><input type="text" name="info_title{{$count}}" value="{{null}}" class="text-xs"></td>
+                                        <td class="px-6 py-4 "><input type="text" name="info_title{{$count}}" value="{{null}}" class="w-full text-xs text-dashInputColor"></td>
                                     @endif
 
                                     @if($val["benefit_content"]!=null)
-                                        <td class="px-6 py-4 w-150"><textarea name="info_content{{$count}}" class="text-xs">{{$val["benefit_content"]}}</textarea></td>
+                                        <td class="px-6 py-4"><textarea name="info_content{{$count}}" class=" w-full text-xs h-120 text-dashInputColor">{{$val["benefit_content"]}}</textarea></td>
                                     @else
-                                        <td class="px-6 py-4 w-150"><textarea name="info_content{{$count}}" class="text-xs"></textarea></td>
+                                        <td class="px-6 py-4 "><textarea name="info_content{{$count}}" class="w-full text-xs h-120 text-dashInputColor"></textarea></td>
                                     @endif
                                 @endforeach
 
                                 @for($i=$count;$i<$tmp_column_count;$i++)
-                                    <td class="px-6 py-4 w-150"><textarea type="text" name="info_title{{$i+1}}"  class="text-xs"></textarea></td>
-                                    <td class="px-6 py-4 w-150"><textarea type="text" name="info_content{{$i+1}}" class="text-xs"></textarea></td>
+                                    <td class="px-6 py-4"><input type="text" name="info_title{{$i+1}}"  class="w-full text-xs text-dashInputColor"></td>
+                                    <td class="px-6 py-4"><textarea type="text" name="info_content{{$i+1}}" class="w-full text-xs h-120 text-dashInputColor"></textarea></td>
                                 @endfor
 
                                 <td class="px-2 py-4">
-                                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>
-                                    <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>
+                                    <x-dashboard_btn></x-dashboard_btn>
                                 </td>
                             </form>
                             <livewire:benefit-livewire :id="$value->id" :benefit_id="$value->benefit[0]['benefit_id']"></livewire:benefit-livewire>
@@ -136,25 +143,14 @@
 </x-dash-layout>
 
 <script>
-    // テーブルinput表示・非表示切り替え(eventFlagにはdisplay:node)
-
+    // テーブルinput表示・非表示切り替え(eventFlagにはdiplay:node)
     let editTr = document.getElementsByClassName("editTr");
     let originalTr = document.getElementsByClassName("originalTr");
     let editBtn = document.getElementsByClassName("editBtn");
     let closeBtn = document.getElementsByClassName("closeBtn");
 
     for(let i = 0;i<editTr.length;i++){
-        editTr[i].classList.add("eventFlag");
-
-        editBtn[i].addEventListener("click",function (){
-            editTr[i].classList.remove("eventFlag");
-            originalTr[i].classList.add("eventFlag");
-        })
-
-        closeBtn[i].addEventListener("click",function (){
-            originalTr[i].classList.remove("eventFlag");
-            editTr[i].classList.add("eventFlag");
-        })
+        dashTrToggle(i)
     }
 
     // 募集職種追加
@@ -178,13 +174,18 @@
 
         let new_textarea_content = document.createElement("textarea");
         let new_label_content = document.createElement("label");
+        let new_span = document.createElement("span");
         let new_div_content = document.createElement("div");
 
-        new_label_content.innerText = "＊内容"+count;
+        new_label_content.innerText = "内容"+count;
+        new_span.innerText = "必須";
         new_label_content.classList.add("block","mb-2","text-sm","font-medium","text-gray-900","dark:text-white")
+        new_span.classList.add("bg-red-500","text-white","text-sm","font-medium","me-2","px-2.5","py-0.5","rounded-8");
         new_textarea_content.classList.add("bg-gray-50","border","border-gray-300","text-gray-900","text-sm","rounded-lg","focus:ring-blue-500","focus:border-blue-500","block","w-full","p-2.5","dark:bg-gray-700","dark:border-gray-600","dark:placeholder-gray-400","dark:text-white","dark:focus:ring-blue-500","dark:focus:border-blue-500")
         new_textarea_content.setAttribute('name', ' info_content'+count);
+        new_textarea_content.setAttribute('required', '');
 
+        new_label_content.prepend(new_span);
         new_div_content.appendChild(new_label_content);
         new_div_content.appendChild(new_textarea_content);
 

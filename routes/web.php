@@ -22,10 +22,6 @@ Route::get('/',function (){
 });
 Route::get('/', [\App\Http\Controllers\kikukawaController::class,"giveInfo"])->name('giveInfo');
 
-Route::get('/dashboard-main', [\App\Http\Controllers\kikukawaController::class,"dashboardMain"])->name('dashboardMain');
-
-Route::get('/dashboard-user', [\App\Http\Controllers\kikukawaController::class,"dashboardUser"])->name('dashboardUser');
-
 //Event
 Route::get("/dashboard/show-event",[\App\Http\Controllers\dashEvent::class,"showEvent"])->name("show-event");
 Route::post("/dashboard/add-event",[\App\Http\Controllers\dashEvent::class,"addEvent"])->name("add-event");
@@ -79,3 +75,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Language Switcher Route 言語切替用ルートだよ
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+});

@@ -33,15 +33,19 @@
                 @foreach($messages as $key=>$value)
                     {{--最初表示されるtr--}}
                     <tr class="originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4 w-150 text-center">{{$value["role"]!=null?$value["role"]:"-"}}</td>
-                        <td class="px-6 py-4 w-150">{{$value["name"]}} </td>
-                        <td class="px-6 py-4 w-180">
-                            <img src="{{asset($value->path)}}" class="w-full rounded-8 shrink-0 object-cover">
+                        <td class="px-6 py-4 w-130 text-center">{{$value["role"]!=null?$value["role"]:"-"}}</td>
+                        <td class="px-6 py-4 w-130 text-center">{{$value["name"]}} </td>
+                        <td class="px-6 py-4">
+                            <div class="flexCenter">
+                                <img src="{{asset($value->path)}}" class="w-[50%] rounded-8 shrink-0 object-cover">
+                            </div>
                         </td>
-                        <td class="px-6 py-4 w-1/6">{{$value["title"]}} </td>
-                        <td class="px-6 py-4 w-[40%]">{{$value["msg"]}} </td>
-                        <td class="px-6 py-4 w-42">
-                            <a href="#" class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <td class="px-6 py-4 w-180">{{$value["title"]}} </td>
+                        <td class="px-6 py-4 w-350">{{$value["msg"]}} </td>
+                        <td class="px-6 py-4 w-100">
+                            <div class="flexCenter">
+                                <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                            </div>
                         </td>
                         <livewire:message-livewire :id="$value->id"></livewire:message-livewire>
                     </tr>
@@ -51,14 +55,26 @@
                         <form method="post" action="{{route('update-message',$value)}}" enctype="multipart/form-data">
                             @csrf
                             @method("patch")
-                            <td class="px-2 py-4 w-100"><input type="text" name="role" value="{{$value["role"]!=null?$value["role"]:null}}" class="text-xs"></td>
-                            <td class="px-2 py-4 w-100"><input type="text" name="name" value="{{$value["name"]}}" class="text-xs"> </td>
-                            <td class="px-2 py-4 w-150"><input type="file" name="image" class="w-150 text-xs"></td>
-                            <td class="px-2 py-4 w-150"><input type="text" name="title" value="{{$value["title"]}}" class="text-xs"></td>
-                            <td class="px-2 py-8 w-full"><textarea  name="msg" class="w-full h-200 text-xs">{{$value["msg"]}}</textarea></td>
+                            <td class="px-2 py-4"><input type="text" name="role" value="{{$value["role"]!=null?$value["role"]:null}}" class="text-xs text-dashInputColor"></td>
+                            <td class="px-2 py-4"><input type="text" name="name" value="{{$value["name"]}}" class="text-xs text-dashInputColor"> </td>
+                            <td class="px-6 py-4">
+                                <div class="flexColumnCenter gap-2">
+                                    <label class="py-2 px-4 bg-black hover:cursor-pointer">
+                                        <input type="file" name="image" class="imgInput hidden">
+                                        <i class="iconDefault fa-solid fa-file-arrow-up text-white"></i>
+                                        <i class="iconHidden hidden fa-regular fa-circle-check text-white"></i>
+                                        <span class="fileSpan text-white">ファイル選択</span>
+                                    </label>
+                                    <div class="flexColumnCenter">
+                                        <img src="{{asset($value->path)}}" class="w-4/12 rounded-8 shrink-0 object-cover">
+                                        <p class="text-xs">※現在の画像</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-2 py-4"><textarea  name="title" class="w-full h-200 text-xs text-dashInputColor">{{$value["title"]}}</textarea></td>
+                            <td class="px-2 py-8"><textarea  name="msg" class="w-full h-200 text-xs text-dashInputColor">{{$value["msg"]}}</textarea></td>
                             <td class="px-2 py-4">
-                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">save</button>
-                                <a href="#" class="closeBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">✗</a>
+                                <x-dashboard_btn></x-dashboard_btn>
                             </td>
                         </form>
                         <livewire:message-livewire :id="$value->id"></livewire:message-livewire>
@@ -92,7 +108,7 @@
                     </div>
                     <div>
                         <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> プロフィール画像</label>
-                        <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>
                 <div class="flex justify-center">
@@ -105,24 +121,23 @@
 
 <script>
     // テーブルinput表示・非表示切り替え(eventFlagにはdiplay:node)
-
     let editTr = document.getElementsByClassName("editTr");
     let originalTr = document.getElementsByClassName("originalTr");
     let editBtn = document.getElementsByClassName("editBtn");
     let closeBtn = document.getElementsByClassName("closeBtn");
 
     for(let i = 0;i<editTr.length;i++){
-        editTr[i].classList.add("eventFlag");
+        dashTrToggle(i)
+    }
 
-        editBtn[i].addEventListener("click",function (){
-            editTr[i].classList.remove("eventFlag");
-            originalTr[i].classList.add("eventFlag");
-        })
+    let imgInput = document.getElementsByClassName("imgInput");
+    let fileSpan = document.getElementsByClassName("fileSpan");
+    let iconHidden = document.getElementsByClassName("iconHidden");
+    let iconDefault = document.getElementsByClassName("iconDefault");
 
-        closeBtn[i].addEventListener("click",function (){
-            originalTr[i].classList.remove("eventFlag");
-            editTr[i].classList.add("eventFlag");
-        })
+    for(let i = 0;i<imgInput.length;i++){
+        resetInputValue(i);
+        uploadFile(i)
     }
 
 </script>
