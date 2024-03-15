@@ -22,7 +22,7 @@ class dashEvent extends Controller
         $post = Event::create([
             "date" => $request->date,
             "title" => $request->title,
-            "category_id" => $request->id,
+            "category_id" => $request->category_id,
         ]);
 
         // 元のページに戻る

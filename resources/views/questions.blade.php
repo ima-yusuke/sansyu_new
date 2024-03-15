@@ -3,20 +3,22 @@
         {{--現在の一覧表示--}}
         <section class="w-[90%] flexColumn gap-8 sm:rounded-lg">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 質問一覧 】</h2>
-            <table class="shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+
+            <div class="overflow-y-auto overflow-x-auto h-600">
+                <table class="shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr class="text-center">
-                    <th scope="col" class="px-6 py-3">
-                        質問
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        回答
-                    </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 _sticky_b">
                         編集
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 _sticky_b">
                         削除
+                    </th>
+                    <th scope="col" class="px-6 py-3 _sticky_b">
+                        質問
+                    </th>
+                    <th scope="col" class="px-6 py-3 _sticky_b">
+                        回答
                     </th>
                 </tr>
                 </thead>
@@ -24,18 +26,18 @@
                 @foreach($questions as $key=>$value)
                     {{--最初表示されるtr--}}
                     <tr class="h-120 originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4 w-[30%]">
-                            <div class="flexCenter">{{$value["question"]}} </div>
-                        </td>
-                        <td class="px-6 py-4 w-[50%]">
-                            <div class="flexCenter">{{$value["answer"]}}</div>
-                        </td>
                         <td class="px-6 py-4">
                             <div class="flexCenter">
                                 <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
                             </div>
                         </td>
                         <livewire:question-livewire :id="$value->id"></livewire:question-livewire>
+                        <td class="px-6 py-4 w-[30%]">
+                            <div class="flexCenter">{{$value["question"]}} </div>
+                        </td>
+                        <td class="px-6 py-4 w-[50%]">
+                            <div class="flexCenter">{{$value["answer"]}}</div>
+                        </td>
                     </tr>
 
                     {{--hidden (編集用tr)--}}
@@ -43,17 +45,20 @@
                         <form method="post" action="{{route('update-question',$value)}}" enctype="multipart/form-data">
                             @csrf
                             @method("patch")
-                            <td class="px-2 py-4 w-[30%]"><input type="text" name="question" value="{{$value["question"]}}" class="w-full text-xs text-dashInputColor"> </td>
-                            <td class="px-2 py-4 w-[50%]"><textarea name="answer" class="w-[90%] h-100 text-xs text-dashInputColor">{{$value["answer"]}}</textarea></td>
                             <td class="px-2 py-4">
                                 <x-dashboard_btn></x-dashboard_btn>
                             </td>
+                            <livewire:question-livewire :id="$value->id"></livewire:question-livewire>
+
+                            <td class="px-2 py-4 w-[30%]"><input type="text" name="question" value="{{$value["question"]}}" class="w-full text-xs text-dashInputColor"> </td>
+                            <td class="px-2 py-4 w-[50%]"><textarea name="answer" class="w-[90%] h-100 text-xs text-dashInputColor">{{$value["answer"]}}</textarea></td>
+
                         </form>
-                        <livewire:question-livewire :id="$value->id"></livewire:question-livewire>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+            </div>
         </section>
 
         {{--Add product--}}

@@ -3,29 +3,31 @@
         {{--現在の一覧表示--}}
         <section class="w-[90%] flexColumn gap-8 sm:rounded-lg">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 メッセージ一覧 】</h2>
-            <table class="shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+
+            <div class="overflow-y-auto overflow-x-auto h-600">
+                <table class="shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr class="text-center">
-                    <th scope="col" class="px-6 py-3">
-                        役職
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        氏名
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        プロフィール画像
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        タイトル
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        メッセージ
-                    </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 _sticky_b">
                         編集
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 _sticky_b">
                         削除
+                    </th>
+                    <th scope="col" class="px-6 py-3 _sticky_b">
+                        役職
+                    </th>
+                    <th scope="col" class="px-6 py-3 _sticky_b">
+                        氏名
+                    </th>
+                    <th scope="col" class="px-6 py-3 _sticky_b">
+                        プロフィール画像
+                    </th>
+                    <th scope="col" class="px-6 py-3 _sticky_b">
+                        タイトル
+                    </th>
+                    <th scope="col" class="px-6 py-3 _sticky_b">
+                        メッセージ
                     </th>
                 </tr>
                 </thead>
@@ -33,6 +35,12 @@
                 @foreach($messages as $key=>$value)
                     {{--最初表示されるtr--}}
                     <tr class="originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4 w-100">
+                            <div class="flexCenter">
+                                <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                            </div>
+                        </td>
+                        <livewire:message-livewire :id="$value->id"></livewire:message-livewire>
                         <td class="px-6 py-4 w-130 text-center">{{$value["role"]!=null?$value["role"]:"-"}}</td>
                         <td class="px-6 py-4 w-130 text-center">{{$value["name"]}} </td>
                         <td class="px-6 py-4">
@@ -42,12 +50,6 @@
                         </td>
                         <td class="px-6 py-4 w-180">{{$value["title"]}} </td>
                         <td class="px-6 py-4 w-350">{{$value["msg"]}} </td>
-                        <td class="px-6 py-4 w-100">
-                            <div class="flexCenter">
-                                <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
-                            </div>
-                        </td>
-                        <livewire:message-livewire :id="$value->id"></livewire:message-livewire>
                     </tr>
 
                     {{--hidden (編集用tr)--}}
@@ -55,12 +57,17 @@
                         <form method="post" action="{{route('update-message',$value)}}" enctype="multipart/form-data">
                             @csrf
                             @method("patch")
+                            <td class="px-2 py-4">
+                                <x-dashboard_btn></x-dashboard_btn>
+                            </td>
+                            <livewire:message-livewire :id="$value->id"></livewire:message-livewire>
+
                             <td class="px-2 py-4"><input type="text" name="role" value="{{$value["role"]!=null?$value["role"]:null}}" class="text-xs text-dashInputColor"></td>
                             <td class="px-2 py-4"><input type="text" name="name" value="{{$value["name"]}}" class="text-xs text-dashInputColor"> </td>
                             <td class="px-6 py-4">
                                 <div class="flexColumnCenter gap-2">
                                     <label class="py-2 px-4 bg-black hover:cursor-pointer">
-                                        <input type="file" name="image" class="imgInput hidden">
+                                        <input type="file" accept="image/jpeg,image/png"  name="image" class="imgInput hidden">
                                         <i class="iconDefault fa-solid fa-file-arrow-up text-white"></i>
                                         <i class="iconHidden hidden fa-regular fa-circle-check text-white"></i>
                                         <span class="fileSpan text-white">ファイル選択</span>
@@ -73,15 +80,12 @@
                             </td>
                             <td class="px-2 py-4"><textarea  name="title" class="w-full h-200 text-xs text-dashInputColor">{{$value["title"]}}</textarea></td>
                             <td class="px-2 py-8"><textarea  name="msg" class="w-full h-200 text-xs text-dashInputColor">{{$value["msg"]}}</textarea></td>
-                            <td class="px-2 py-4">
-                                <x-dashboard_btn></x-dashboard_btn>
-                            </td>
                         </form>
-                        <livewire:message-livewire :id="$value->id"></livewire:message-livewire>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+            </div>
         </section>
 
         {{--Add product--}}
@@ -108,7 +112,7 @@
                     </div>
                     <div>
                         <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> プロフィール画像</label>
-                        <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <input type="file" name="image" accept="image/jpeg,image/png"  id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>
                 <div class="flex justify-center">

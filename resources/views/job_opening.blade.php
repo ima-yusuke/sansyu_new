@@ -4,42 +4,48 @@
         <section class="w-[90%] flexColumn gap-8 sm:rounded-lg">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 募集職種・募集要項一覧 】</h2>
 
-            <div class="overflow-scroll">
+            <div class="overflow-y-auto overflow-x-auto h-600">
                 <table class="whitespace-nowrap shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr class="text-center">
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 _sticky_ab">
+                            編集
+                        </th>
+                        <th scope="col" class="px-6 py-3 _sticky_ab2">
+                            削除
+                        </th>
+                        <th scope="col" class="px-6 py-3 _sticky_b">
                             募集部門
                         </th>
-                        <th scope="col" class="px-16 py-3">
+                        <th scope="col" class="px-16 py-3 _sticky_b">
                             募集対象
                         </th>
-                        <th scope="col" class="px-16 py-3">
+                        <th scope="col" class="px-16 py-3 _sticky_b">
                             募集人数
                         </th>
-                        <th scope="col" class="px-24 py-3">
+                        <th scope="col" class="px-24 py-3 _sticky_b">
                             希望する人物像
                         </th>
                         @for($i=1;$i<=$tmp_column_count;$i++)
-                            <th scope="col" class="px-16 py-3">
+                            <th scope="col" class="px-16 py-3 _sticky_b">
                                 募集職種{{$i}} タイトル
                             </th>
-                            <th scope="col" class="px-16 py-3">
+                            <th scope="col" class="px-16 py-3 _sticky_b">
                                 募集職種{{$i}} コンテンツ
                             </th>
                         @endfor
-                        <th scope="col" class="px-6 py-3">
-                            編集
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            削除
-                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($job_openings as $key=>$value)
                         {{--最初表示されるtr--}}
                         <tr class="h-200 originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4 w-42 _sticky_a text-gray-700 uppercase bg-gray-50">
+                                <div class="flexCenter">
+                                    <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                                </div>
+                            </td>
+                            <livewire:job-opening-livewire :id="$value->id" :job_opening_id="$value->job_opening[0]['job_opening_id']"></livewire:job-opening-livewire>
                             <td class="px-6 py-4">
                                 <div class="flexCenter">
                                     {{$value["title"]}}
@@ -94,13 +100,6 @@
                                 <td class="px-6 py-4 w-150"><div class="flexCenter">-</div></td>
                                 <td class="px-6 py-4 w-150"><div class="flexCenter">-</div></td>
                             @endfor
-
-                            <td class="px-6 py-4 w-42">
-                                <div class="flexCenter">
-                                    <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
-                                </div>
-                            </td>
-                            <livewire:job-opening-livewire :id="$value->id" :job_opening_id="$value->job_opening[0]['job_opening_id']"></livewire:job-opening-livewire>
                         </tr>
 
                         {{--hidden (編集用tr)--}}
@@ -110,6 +109,10 @@
                                 @method("patch")
                                 <input type="hidden" value="{{$value->job_opening[0]["job_opening_id"]}}" name="job_opening_id">
                                 <input type="hidden" value="{{$value["id"]}}" name="id">
+                                <td class="px-2 py-4 _sticky_a">
+                                    <x-dashboard_btn></x-dashboard_btn>
+                                </td>
+                                <livewire:job-opening-livewire :id="$value->id"></livewire:job-opening-livewire>
                                 <td class="px-2 py-4 w-150"><input type="text" name="title" value="{{$value["title"]}}" class="text-xs text-dashInputColor"></td>
                                 <td class="px-2 py-4 w-100"><input type="text" name="job_target" value="{{$value["job_target"]!=null?$value["job_target"]:null}}" class="text-xs text-dashInputColor"></td>
                                 <td class="px-2 py-4 w-100"><input type="text" name="recruit_number" value="{{$value["recruit_number"]!=null?$value["recruit_number"]:null}}" class="text-xs text-dashInputColor"></td>
@@ -140,12 +143,7 @@
                                         <textarea name="info_content{{$i+1}}" class="w-full h-200 text-xs text-dashInputColor"></textarea>
                                     </td>
                                 @endfor
-
-                                <td class="px-2 py-4">
-                                    <x-dashboard_btn></x-dashboard_btn>
-                                </td>
                             </form>
-                            <livewire:job-opening-livewire :id="$value->id"></livewire:job-opening-livewire>
                         </tr>
                     @endforeach
                     </tbody>

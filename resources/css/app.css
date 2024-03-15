@@ -88,6 +88,109 @@ button,a{
     transform: rotate(45deg) translateY(-10px);
 }
 
+/*=================[dashboard table スクロール固定（編集・削除）]=========================*/
+._sticky_a {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: none;
+    border-left: none;
+    border-right: none;
+}
+._sticky_a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f9fafb;
+    z-index: -1;
+}
+
+._sticky_a2 {
+    position: sticky;
+    top: 0;
+    left: 70px;
+    background: none;
+    border-left: none;
+    border-right: none;
+}
+._sticky_a2:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f9fafb;
+    z-index: -1;
+}
+
+._sticky_b {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: none;
+    border-top: none;
+    border-bottom: none;
+}
+._sticky_b:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f9fafb;
+    z-index: -1;
+}
+
+._sticky_ab {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    z-index: 1;
+}
+._sticky_ab:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#f9fafb;
+    z-index: -1;
+}
+
+._sticky_ab2 {
+    position: sticky;
+    top: 0;
+    left: 70px;
+    background: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    z-index: 1;
+}
+._sticky_ab2:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#f9fafb;
+    z-index: -1;
+}
+
+
 /*==========================================*/
 @layer components {
     .flexColumn{

@@ -3,57 +3,57 @@
         {{--現在の一覧表示--}}
         <section class="w-[90%] flexColumn gap-8 sm:rounded-lg">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 社員インタビュー　一覧 】</h2>
-            <div class="overflow-scroll">
+            <div class="overflow-y-auto overflow-x-auto h-600 ">
                 <table class="whitespace-nowrap w-[95%] shadow-md text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr class="text-center text-sm">
-                        <th scope="col" class="px-2 py-3">
-                            氏名
-                        </th>
-                        <th scope="col" class="px-2 py-3">
-                            プロフィール画像①
-                        </th>
-                        <th scope="col" class="px-2 py-3">
-                            プロフィール画像②
-                        </th>
-                        <th scope="col" class="px-2 py-3">
-                            最終学歴
-                        </th>
-                        <th scope="col" class="px-2 py-3">
-                            入社年/職種
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            タイトル
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            入社のきっかけ
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            仕事のやりがい
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            日々、意識していること
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            今後の目標
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            就職活動中の皆さんへ
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            1日のスケジュール
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            キャリアパス
-                        </th>
-                        <th scope="col" class="px-16 py-3">
-                            休日の過ごし方
-                        </th>
-                        <th scope="col" class="px-2 py-3">
+                        <th scope="col" class="px-2 py-3 _sticky_ab">
                             編集
                         </th>
-                        <th scope="col" class="px-2 py-3">
+                        <th scope="col" class="px-2 py-3 _sticky_ab2">
                             削除
+                        </th>
+                        <th scope="col" class="px-2 py-3 _sticky_b">
+                            氏名
+                        </th>
+                        <th scope="col" class="px-2 py-3 _sticky_b">
+                            プロフィール画像①
+                        </th>
+                        <th scope="col" class="px-2 py-3 _sticky_b">
+                            プロフィール画像②
+                        </th>
+                        <th scope="col" class="px-2 py-3 _sticky_b">
+                            最終学歴
+                        </th>
+                        <th scope="col" class="px-2 py-3 _sticky_b">
+                            入社年/職種
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            タイトル
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            入社のきっかけ
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            仕事のやりがい
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            日々、意識していること
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            今後の目標
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            就職活動中の皆さんへ
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            1日のスケジュール
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            キャリアパス
+                        </th>
+                        <th scope="col" class="px-16 py-3 _sticky_b">
+                            休日の過ごし方
                         </th>
                     </tr>
                     </thead>
@@ -61,6 +61,12 @@
                     @foreach($interviews as $key=>$value)
                         {{-- 最初表示されるtr--}}
                         <tr class="h-200 text-xs originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4 _sticky_a text-gray-700 uppercase bg-gray-50">
+                                <div class="flexCenter">
+                                    <a class="text-center editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
+                                </div>
+                            </td>
+                            <livewire:interview-livewire :id="$value->id"></livewire:interview-livewire>
                             <td class="text-center px-6 py-4 w-[5%] ">
                                 <div class="flexCenter">{{$value["name"]}}</div>
                             </td>
@@ -70,7 +76,7 @@
                             <td class="text-center px-2 py-4 w-100">
                                 <img src="{{asset($value->path_2)}}" class="rounded-8 shrink-0 object-cover">
                             </td>
-                            <td class="text-center px-2 py-4 w-150">
+                            <td class="text-center px-2 py-4 w-150 ">
                                 <p>{{$value["school"]}}</p>
                                 <p>{{$value["department"]!=null?$value["department"]:null}}</p>
                                 <p>{{$value["faculty"]!=null?$value["faculty"]:null}}</p>
@@ -106,12 +112,6 @@
                             <td class="px-2 py-4 whitespace-normal">
                                 <div class="flexCenter">{{$value["question_8"]}}</div>
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="flexCenter">
-                                    <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
-                                </div>
-                            </td>
-                            <livewire:interview-livewire :id="$value->id"></livewire:interview-livewire>
                         </tr>
 
                         {{--hidden (編集用tr)--}}
@@ -119,17 +119,22 @@
                             <form method="post" action="{{route('update-interview',$value)}}" enctype="multipart/form-data">
                                 @csrf
                                 @method("patch")
+                                <td class="px-6 py-4 _sticky_a ">
+                                    <x-dashboard_btn></x-dashboard_btn>
+                                </td>
+                                <livewire:interview-livewire :id="$value->id"></livewire:interview-livewire>
+
                                 <td class="px-6 py-4"><input class="text-xs text-dashInputColor" type="text" name="name" value="{{$value["name"]}}"></td>
                                 <td class="px-6 py-4">
                                     <div class="flexColumnCenter gap-2">
                                         <label class="py-2 px-4 bg-black hover:cursor-pointer">
-                                            <input type="file" name="path_1" class="imgInput hidden">
+                                            <input type="file" accept="image/jpeg,image/png" name="path_1" class="imgInput hidden">
                                             <i class="iconDefault fa-solid fa-file-arrow-up text-white"></i>
                                             <i class="iconHidden hidden fa-regular fa-circle-check text-white"></i>
                                             <span class="fileSpan text-white">ファイル選択</span>
                                         </label>
                                         <div class="flexColumnCenter">
-                                            <img src="{{asset($value->path_1)}}" class="rounded-8 shrink-0 object-cover">
+                                            <img src="{{asset($value->path_1)}}" class="w-full rounded-8 shrink-0 object-cover">
                                             <p class="text-xs">※現在の画像</p>
                                         </div>
                                     </div>
@@ -137,7 +142,7 @@
                                 <td class="px-6 py-4">
                                     <div class="flexColumnCenter gap-2">
                                         <label class="py-2 px-4 bg-black hover:cursor-pointer">
-                                            <input type="file" name="path_2" class="imgInput hidden">
+                                            <input type="file" accept="image/jpeg,image/png"  name="path_2" class="imgInput hidden">
                                             <i class="iconDefault fa-solid fa-file-arrow-up text-white"></i>
                                             <i class="iconHidden hidden fa-regular fa-circle-check text-white"></i>
                                             <span class="fileSpan text-white">ファイル選択</span>
@@ -166,11 +171,7 @@
                                 <td class="px-6 py-4 w-full"><textarea name="question_6" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_6"]}}</textarea></td>
                                 <td class="px-6 py-4 w-full"><textarea name="question_7" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_7"]}}</textarea></td>
                                 <td class="px-6 py-4 w-full"><textarea name="question_8" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_8"]}}</textarea></td>
-                                <td class="px-6 py-4">
-                                    <x-dashboard_btn></x-dashboard_btn>
-                                </td>
                             </form>
-                            <livewire:interview-livewire :id="$value->id"></livewire:interview-livewire>
                         </tr>
                     @endforeach
                     </tbody>
@@ -248,11 +249,11 @@
                     </div>
                     <div>
                         <label for="path_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> プロフィール画像①</label>
-                        <input type="file" name="path_1" id="path_1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <input type="file" accept="image/jpeg,image/png"  name="path_1" id="path_1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                     <div>
                         <label for="path_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded-8">必須</span> プロフィール画像②</label>
-                        <input type="file" name="path_2" id="path_2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <input type="file" accept="image/jpeg,image/png"  name="path_2" id="path_2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>
                 <div class="flex justify-center">
