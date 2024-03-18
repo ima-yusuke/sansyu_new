@@ -1,5 +1,6 @@
 function uploadFile(idx){
     imgInput[idx].addEventListener("change",function(){
+
         if(imgInput[idx].value!=null){
             fileSpan[idx].innerText = "選択済";
             iconHidden[idx].classList.remove("hidden");
@@ -7,6 +8,27 @@ function uploadFile(idx){
         }
     })
 }
+
+function uploadTwoFile(idx){
+    idx = idx * 2;
+
+    imgInput[idx].addEventListener("change",function(){
+        if(imgInput[idx].value!=null){
+            fileSpan[idx].innerText = "選択済";
+            iconHidden[idx].classList.remove("hidden");
+            iconDefault[idx].classList.add("hidden");
+        }
+    })
+
+    imgInput[idx+1].addEventListener("change",function(){
+        if(imgInput[idx+1].value!=null){
+            fileSpan[idx+1].innerText = "選択済";
+            iconHidden[idx+1].classList.remove("hidden");
+            iconDefault[idx+1].classList.add("hidden");
+        }
+    })
+}
+
 
 function resetInputValue(idx){
     closeBtn[idx].addEventListener("click",function() {

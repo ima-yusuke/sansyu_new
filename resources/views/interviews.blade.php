@@ -124,7 +124,7 @@
                                 </td>
                                 <livewire:interview-livewire :id="$value->id"></livewire:interview-livewire>
 
-                                <td class="px-6 py-4"><input class="text-xs text-dashInputColor" type="text" name="name" value="{{$value["name"]}}"></td>
+                                <td class="px-6 py-4"><input class="text-xs text-dashInputColor" type="text" name="name" value="{{$value["name"]}}" required></td>
                                 <td class="px-6 py-4">
                                     <div class="flexColumnCenter gap-2">
                                         <label class="py-2 px-4 bg-black hover:cursor-pointer">
@@ -154,23 +154,23 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="school" value="{{$value["school"]}}"></p>
+                                    <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="school" value="{{$value["school"]}}" required></p>
                                     <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="department" value="{{$value["department"]!=null?$value["department"]:null}}" placeholder="〇〇学部"></p>
                                     <p><input class="text-xs text-dashInputColor" type="text" name="faculty" value="{{$value["faculty"]!=null?$value["faculty"]:null}}" placeholder="〇〇学科"></p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="hire_year" value="{{$value["hire_year"]}}"></p>
-                                    <p><input class="text-xs text-dashInputColor" type="text" name="job_dpt" value="{{$value["job_dpt"]}}"></p>
+                                    <p class="my-2"><input class="text-xs text-dashInputColor" type="text" name="hire_year" value="{{$value["hire_year"]}}" required></p>
+                                    <p><input class="text-xs text-dashInputColor" type="text" name="job_dpt" value="{{$value["job_dpt"]}}" required></p>
                                 </td>
-                                <td class="px-6 py-4 w-full"><textarea name="title" class="w-full h-200 text-xs text-dashInputColor">{{$value["title"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_1" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_1"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_2" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_2"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_3" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_3"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_4" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_4"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_5" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_5"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_6" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_6"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_7" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_7"]}}</textarea></td>
-                                <td class="px-6 py-4 w-full"><textarea name="question_8" class="w-full h-200 text-xs text-dashInputColor">{{$value["question_8"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="title" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["title"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_1" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_1"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_2" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_2"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_3" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_3"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_4" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_4"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_5" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_5"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_6" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_6"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_7" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_7"]}}</textarea></td>
+                                <td class="px-6 py-4 w-full"><textarea name="question_8" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["question_8"]}}</textarea></td>
                             </form>
                         </tr>
                     @endforeach
@@ -283,7 +283,7 @@
 
     for(let i = 0;i<imgInput.length;i++){
         resetTwoInputValue(i)
-        uploadFile(i)
+        uploadTwoFile(i)
     }
 
 </script>

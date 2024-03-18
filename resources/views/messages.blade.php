@@ -63,7 +63,7 @@
                             <livewire:message-livewire :id="$value->id"></livewire:message-livewire>
 
                             <td class="px-2 py-4"><input type="text" name="role" value="{{$value["role"]!=null?$value["role"]:null}}" class="text-xs text-dashInputColor"></td>
-                            <td class="px-2 py-4"><input type="text" name="name" value="{{$value["name"]}}" class="text-xs text-dashInputColor"> </td>
+                            <td class="px-2 py-4"><input type="text" name="name" value="{{$value["name"]}}" class="text-xs text-dashInputColor" required> </td>
                             <td class="px-6 py-4">
                                 <div class="flexColumnCenter gap-2">
                                     <label class="py-2 px-4 bg-black hover:cursor-pointer">
@@ -78,8 +78,8 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-2 py-4"><textarea  name="title" class="w-full h-200 text-xs text-dashInputColor">{{$value["title"]}}</textarea></td>
-                            <td class="px-2 py-8"><textarea  name="msg" class="w-full h-200 text-xs text-dashInputColor">{{$value["msg"]}}</textarea></td>
+                            <td class="px-2 py-4"><textarea  name="title" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["title"]}}</textarea></td>
+                            <td class="px-2 py-8"><textarea  name="msg" class="w-full h-200 text-xs text-dashInputColor" required>{{$value["msg"]}}</textarea></td>
                         </form>
                     </tr>
                 @endforeach

@@ -116,8 +116,8 @@
 
         {{--製品紹介--}}
         <section class="commonSectionStyles md:mx-4">
-            <div class="lg:w-9/12  flex flex-col items-start gap-8 mx-4">
-                <article class="flex flex-col items-start gap-9">
+            <div class="lg:w-2/3  flex flex-col items-start gap-8 mx-4">
+                <article class="flex flex-col items-start gap-9 mx-4">
                     {{--タイトル--}}
                     <x-title>製品紹介</x-title>
 
@@ -131,8 +131,8 @@
                 <article class="flex flex-col justify-center items-start gap-16">
                     <div class="flex items-start justify-center content-start gap-6 flex-wrap w-full">
                         @foreach($products as $key=>$value)
-                            <aside class="shadow-item flexColumn items-center gap-2 pb-4 rounded-8 md:w-[48%] lg:w-[31.5%]">
-                                <img src="{{asset($value->path)}}" class="w-full h-full rounded-8 shrink-0 object-cover" alt="image">
+                            <aside class="shadow-item flexColumn overflow-hidden h-230 items-center gap-2 pb-4 rounded-8 w-[90%] md:w-[48%] lg:w-[31%]">
+                                <img src="{{asset($value->path)}}" class="h-[85%] w-full rounded-8 shrink-0 object-cover" alt="image">
                                 <p>{{$value["p_name"]}}</p>
                             </aside>
                         @endforeach

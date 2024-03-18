@@ -48,7 +48,7 @@
                             </td>
                             <livewire:product-livewire :id="$value->id"></livewire:product-livewire>
 
-                            <td class="px-6 py-4"><input type="text" name="p_name" value="{{$value["p_name"]}}" class="text-dashInputColor"> </td>
+                            <td class="px-6 py-4"><input type="text" name="p_name" value="{{$value["p_name"]}}" class="text-dashInputColor" required></td>
                             <td class="px-6 py-4">
                                 <div class="flexColumnCenter gap-2">
                                     <label class="py-2 px-4 bg-black hover:cursor-pointer">

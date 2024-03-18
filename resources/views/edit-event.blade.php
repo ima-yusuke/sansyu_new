@@ -51,10 +51,10 @@
                                     <x-dashboard_btn></x-dashboard_btn>
                                 </td>
                                 <livewire:event-livewire :id="$val['id']"></livewire:event-livewire>
-                                <td class="px-6 py-4"><input type="text" name="title" value="{{$val["title"]}}" class="text-sm text-dashInputColor"> </td>
-                                <td class="px-6 py-4"><input type="date" name="date" value="{{$val["date"]}}" class="text-sm text-dashInputColor"></td>
+                                <td class="px-6 py-4"><input type="text" name="title" value="{{$val["title"]}}" class="text-sm text-dashInputColor" required> </td>
+                                <td class="px-6 py-4"><input type="date" name="date" value="{{$val["date"]}}" class="text-sm text-dashInputColor" required></td>
                                 <td class="px-6 py-4">
-                                    <select name="category_name" class="text-sm text-dashInputColor">
+                                    <select name="category_name" class="text-sm text-dashInputColor" required>
                                         @foreach($categories as $category_value)
                                             <option class="text-sm" value="{{$category_value["id"]}}" @if($val["category_id"]== $category_value["id"]) selected @endif>{{$category_value["category_name"]}}</option>
                                         @endforeach

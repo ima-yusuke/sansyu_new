@@ -113,7 +113,7 @@
                                     <x-dashboard_btn></x-dashboard_btn>
                                 </td>
                                 <livewire:job-opening-livewire :id="$value->id"></livewire:job-opening-livewire>
-                                <td class="px-2 py-4 w-150"><input type="text" name="title" value="{{$value["title"]}}" class="text-xs text-dashInputColor"></td>
+                                <td class="px-2 py-4 w-150"><input type="text" name="title" value="{{$value["title"]}}" class="text-xs text-dashInputColor" required></td>
                                 <td class="px-2 py-4 w-100"><input type="text" name="job_target" value="{{$value["job_target"]!=null?$value["job_target"]:null}}" class="text-xs text-dashInputColor"></td>
                                 <td class="px-2 py-4 w-100"><input type="text" name="recruit_number" value="{{$value["recruit_number"]!=null?$value["recruit_number"]:null}}" class="text-xs text-dashInputColor"></td>
                                 <td class="px-2 py-4 w-100"><textarea name="ideal_emp" class="w-full h-200 text-xs text-dashInputColor">{{$value["ideal_emp"]!=null?$value["ideal_emp"]:null}}</textarea></td>

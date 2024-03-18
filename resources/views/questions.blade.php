@@ -50,8 +50,8 @@
                             </td>
                             <livewire:question-livewire :id="$value->id"></livewire:question-livewire>
 
-                            <td class="px-2 py-4 w-[30%]"><input type="text" name="question" value="{{$value["question"]}}" class="w-full text-xs text-dashInputColor"> </td>
-                            <td class="px-2 py-4 w-[50%]"><textarea name="answer" class="w-[90%] h-100 text-xs text-dashInputColor">{{$value["answer"]}}</textarea></td>
+                            <td class="px-2 py-4 w-[30%]"><input type="text" name="question" value="{{$value["question"]}}" class="w-full text-xs text-dashInputColor" required> </td>
+                            <td class="px-2 py-4 w-[50%]"><textarea name="answer" class="w-[90%] h-100 text-xs text-dashInputColor" required>{{$value["answer"]}}</textarea></td>
 
                         </form>
                     </tr>

@@ -81,7 +81,7 @@
                                 </td>
                                 <livewire:benefit-livewire :id="$value->id" :benefit_id="$value->benefit[0]['benefit_id']"></livewire:benefit-livewire>
 
-                                <td class="px-2 py-4"><input type="text" name="title" value="{{$value["title"]}}" class="w-full text-xs text-dashInputColor"></td>
+                                <td class="px-2 py-4"><input type="text" name="title" value="{{$value["title"]}}" class="w-full text-xs text-dashInputColor" required></td>
                                 <?php  $count=0;  ?>
                                 @foreach($value->benefit as $idx=>$val)
                                         <?php $count++; ?>
