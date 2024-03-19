@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
+use Illuminate\Support\Facades\Storage;
 
 class dashMessage extends Controller
 {
@@ -47,6 +48,9 @@ class dashMessage extends Controller
             $file_name = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/img', $file_name);
             $file_name = 'storage/img/'.$file_name;
+            $str = $message->path;
+            $str = str_replace('storage/img/', '', $str);
+            Storage::disk('public')->delete('img/' . $str);
         }else{
             $file_name = $message->path;
         }

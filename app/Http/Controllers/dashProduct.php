@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class dashProduct extends Controller
 {
@@ -44,9 +45,14 @@ class dashProduct extends Controller
             $file_name = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/img', $file_name);
             $file_name = 'storage/img/'.$file_name;
+            $str = $product->path;
+            $str = str_replace('storage/img/', '', $str);
+            Storage::disk('public')->delete('img/' . $str);
         }else{
             $file_name = $product->path;
         }
+
+
 
         $product->update([
             "p_name" => $request->p_name,

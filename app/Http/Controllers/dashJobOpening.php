@@ -126,7 +126,9 @@ class dashJobOpening extends Controller
             $tmp_content ="info_content".$i+1;
             $job_categories->job_title = $request->$tmp_title;
             $job_categories->job_content =$request->$tmp_content;
-            $job_categories->save();
+            if($request->$tmp_content!=null){
+                $job_categories->save();
+            }
         }
 
 

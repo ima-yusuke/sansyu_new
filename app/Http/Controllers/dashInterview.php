@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Interview;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\In;
 
 class dashInterview extends Controller
@@ -61,6 +62,9 @@ class dashInterview extends Controller
             $file_name1 = $request->file('path_1')->getClientOriginalName();
             $request->file('path_1')->storeAs('public/img', $file_name1);
             $file_name1 = 'storage/img/'.$file_name1;
+            $str = $interview->path_1;
+            $str = str_replace('storage/img/', '', $str);
+            Storage::disk('public')->delete('img/' . $str);
         }else{
             $file_name1 = $interview->path_1;
         }
@@ -69,6 +73,9 @@ class dashInterview extends Controller
             $file_name2 = $request->file('path_2')->getClientOriginalName();
             $request->file('path_2')->storeAs('public/img', $file_name2);
             $file_name2 = 'storage/img/'.$file_name2;
+            $str = $interview->path_2;
+            $str = str_replace('storage/img/', '', $str);
+            Storage::disk('public')->delete('img/' . $str);
         }else{
             $file_name2 = $interview->path_2;
         }
