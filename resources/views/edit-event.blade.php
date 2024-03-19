@@ -29,7 +29,7 @@
                 @foreach($categories as $key=>$value)
                     {{--最初表示されるtr--}}
                     @foreach($value->category as $idx=>$val)
-                        <tr class="h-16 text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-24 text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
                                 <div class="flexCenter">
                                     <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
@@ -43,11 +43,11 @@
 
 
                         {{--hidden (編集用tr)--}}
-                        <tr class="h-16 text-center editTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-24 text-center editTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <form method="post" action="{{route('updateEvent',$val)}}">
                                 @csrf
                                 @method("patch")
-                                <td class="px-6 py-4 gap-6">
+                                <td class="px-6 py-4">
                                     <x-dashboard_btn></x-dashboard_btn>
                                 </td>
                                 <livewire:event-livewire :id="$val['id']"></livewire:event-livewire>

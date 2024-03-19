@@ -25,7 +25,7 @@
                 <tbody>
                 @foreach($products as $key=>$value)
                     {{--最初表示されるtr--}}
-                    <tr class="h-150 text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="h-44 text-center originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4">
                             <div class="flexCenter">
                                 <a class="editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
@@ -39,7 +39,7 @@
                     </tr>
 
                     {{--hidden (編集用tr)--}}
-                    <tr class="h-150 editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="h-44 editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <form method="post" action="{{route('update-product',$value)}}" enctype="multipart/form-data">
                             @csrf
                             @method("patch")

@@ -60,7 +60,7 @@
                     <tbody>
                     @foreach($interviews as $key=>$value)
                         {{-- 最初表示されるtr--}}
-                        <tr class="h-200 text-xs originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-64 text-xs originalTr bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4 _sticky_a text-gray-700 uppercase bg-gray-50">
                                 <div class="flexCenter">
                                     <a class="text-center editBtn font-medium text-blue-600 dark:text-blue-500 hover:underline">編集</a>
@@ -115,7 +115,7 @@
                         </tr>
 
                         {{--hidden (編集用tr)--}}
-                        <tr class="h-200 editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="h-64 editTr text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <form method="post" action="{{route('update-interview',$value)}}" enctype="multipart/form-data">
                                 @csrf
                                 @method("patch")
