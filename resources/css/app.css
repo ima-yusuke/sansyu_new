@@ -59,6 +59,19 @@ button,a{
         padding-bottom: 8rem;
     }
 }
+/*==============[dash input]=============*/
+
+/*.dash_wrapper input{*/
+/*    width: 100%;*/
+/*    padding: 20px 10px;*/
+/*    border: 0;*/
+/*    border-bottom: 2px solid black;*/
+/*    background-color: transparent;*/
+/*}*/
+
+/*input:focus{*/
+/*    outline:none;*/
+/*}*/
 
 /*==============[dashタイトル]====================*/
 .dash_h2 {
@@ -90,9 +103,7 @@ button,a{
     border: 2px solid #000;
     border-radius: 0;
     background: #fff;
-
     -webkit-transform-style: preserve-3d;
-
     transform-style: preserve-3d;
 }
 
