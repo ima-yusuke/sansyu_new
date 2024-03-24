@@ -1,48 +1,5 @@
 <x-layout title="キクカワエンタープライズ">
-    <header class="flexBetween h-16 md:h-70 w-full px-4 md:px-8 fixed md:gap-24 bg-white bg-opacity-75 backdrop-blur-[5px] z-100">
-        <div><a href="#"
-                class="text-sm md:text-base font-bold text-titleBlack md:px-4">キクカワエンタープライズ株式会社</a>
-        </div>
-        {{--通常メニュー--}}
-        <nav class="hidden xl:flex justify-end items-center gap-12 shrink-0">
-            <aside class="flex items-center gap-11">
-                <a href="#about" class="text-base font-bold text-baseColor">会社紹介</a>
-                <a href="#messages" class="text-base font-bold text-baseColor">メッセージ</a>
-                <a href="#interviews" class="text-base font-bold text-baseColor">社員インタビュー</a>
-                <a href="#jobs" class="text-base font-bold text-baseColor">募集職種</a>
-            </aside>
-            <a class="flexCenter gap-2 py-3.5 px-9 text-white shadow-buttonShadow rounded-button bg-gradient-to-r from-buttonLinerStart from-0% to-buttonLinerEnd to-100%">エントリーする→</a>
-        </nav>
-        {{--ハンバーガーメニュー--}}
-        <div class="xl:hidden flex items-center justify-between">
-            <button id="hamburger-btn" type="button" class="flexCenter p-2 w-10 h-10 text-sm text-gray-500">
-                <i class="fa-solid fa-bars text-2xl" id="hamburgerIcon"></i>
-            </button>
-            <div class="w-full hideFlag absolute top-12 right-0" id="navbar-hamburger">
-                <ul class="flexColumn font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                    <li class="navLink">
-                        <a href="#about"
-                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">会社紹介</a>
-                    </li>
-                    <li class="navLink">
-                        <a href="#messages"
-                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">メッセージ</a>
-                    </li>
-                    <li class="navLink">
-                        <a href="#interviews"
-                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">社員インタビュー</a>
-                    </li>
-                    <li class="navLink">
-                        <a href="#jobs"
-                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">募集職種</a>
-                    </li>
-                    <li class="navLink">
-                        <button class="py-2 px-3"><a>エントリーする</a></button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <x-header></x-header>
 
     <main class="bg-main flex flex-col items-center h-full">
 
@@ -64,8 +21,7 @@
         </section>
 
         {{--ヘッダー背景ボール--}}
-        <div
-            class="rounded-1019 shadow-headBall h-1000 w-1000 absolute left-428 top-413 bg-gradient-to-r from-headLinerStart from-32.36% to-headLinerEnd to-79.42%"></div>
+        <div class="rounded-1019 shadow-headBall h-1000 w-1000 absolute left-428 top-413 bg-gradient-to-r from-headLinerStart from-32.36% to-headLinerEnd to-79.42%"></div>
 
         {{--開催情報--}}
         <section class="commonSectionStyles w-full">
@@ -103,7 +59,8 @@
                     <aside>
                         <p class="text-xl md:text-2xl font-bold text-aboutCompany capitalize">明治30年創業。</p>
                         <p class="text-xl md:text-2xl font-bold text-aboutCompany capitalize leading-8 md:leading-9">
-                            加工機のパイオニアとして、現在も世界のモノづくりを牽引しています</p>
+                            加工機のパイオニアとして、現在も世界のモノづくりを牽引しています
+                        </p>
                     </aside>
                     <p class="text-base leading-7">
                         1897（明治30）年、日本初の製材・木工機械メーカーとして伊勢で創業。「切る・削る・磨く」技術の革新をし続け、常に新しい様々な分野の加工機を製造・販売しています。</p>
@@ -359,35 +316,7 @@
         </section>
 
         {{--フッター--}}
-        <section class="w-full">
-            {{--上部--}}
-            <article class="bg-footerBg flexColumn md:flex-row items-start md:items-center md:justify-between md:px-10 lg:px-220 md:h-277 relative overflow-hidden">
-                <div class="z-30 p-12">
-                    <aside class="flex flex-col gap-5 text-white">
-                        <div>
-                            <p><i>KIKUKAWA</i>で見つけよう、</p>
-                            <p>わたしのミライ。</p>
-                        </div>
-                        <p class="text-2xl md:text-4xl font-black">エントリーはこちら</p>
-                    </aside>
-                </div>
-                <div class="z-30 m-auto mb-10 md:m-0">
-                    <a class="flexCenter py-3.5 px-9 text-white shadow-buttonShadow rounded-button bg-gradient-to-r from-buttonLinerStart from-0% to-buttonLinerEnd to-100%">エントリーする→</a>
-                </div>
-                {{-- 背景ボール　左上--}}
-                <div class="rounded-1019 h-357 w-447 -left-240 -top-180 absolute bg-footerBall"></div>
-                {{-- 背景ボール　右下--}}
-                <div class="rounded-1019 h-357 w-447 -right-240 top-80 absolute bg-footerBall"></div>
-            </article>
-
-
-            {{--下部--}}
-            <article class="flexCenter h-100">
-                <p class="w-4/5 text-sm md:text-base text-center">Copyright &copy; 2023 KIKUKAWA ENTERPRISE, INC. All
-                    Rights Reserved.</p>
-            </article>
-        </section>
-
+       <x-footer></x-footer>
     </main>
 </x-layout>
 

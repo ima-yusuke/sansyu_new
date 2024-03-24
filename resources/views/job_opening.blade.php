@@ -2,7 +2,7 @@
     <div class="flexColumn items-center gap-16 py-10">
         {{--現在の一覧表示--}}
         <section class="w-[90%] flexColumn gap-8 sm:rounded-lg">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 募集職種・募集要項一覧 】</h2>
+            <x-dash-title title="募集職種・募集要項一覧" en="Job Description List"></x-dash-title>
 
             <div class="overflow-y-auto overflow-x-auto h-600">
                 <table class="whitespace-nowrap shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -154,7 +154,8 @@
 
         {{--Add product--}}
         <section class="w-[90%] flexColumn gap-8">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">【募集職種・募集要項の追加 】</h2>
+            <x-dash-title title="募集職種・募集要項追加" en="New Job Description"></x-dash-title>
+
             <form class="Form flexColumn gap-8" method="post" action="{{route("add-job_opening")}}" enctype="multipart/form-data">
                 @csrf
                 <div class="add_job_form grid gap-6 mb-6 md:grid-cols-2">
@@ -186,9 +187,7 @@
                 <div class="flex justify-center">
                     <button type="button" class="add_job text-black bg-white hover:bg-black hover:text-white border-2 border-solid border-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-3 text-center"><i class="fa-solid fa-user-plus text-base"></i> 募集職種の追加</button>
                 </div>
-                <div class="flex justify-center">
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-3 text-center">登録</button>
-                </div>
+                <x-register_btn></x-register_btn>
             </form>
         </section>
     </div>

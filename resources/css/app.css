@@ -60,6 +60,65 @@ button,a{
     }
 }
 
+/*==============[dashタイトル]====================*/
+.dash_h2 {
+    position: relative;
+    padding-top: 50px;
+    padding-left: 30px;
+    font-size: 26px;
+}
+
+.dash_h2 span {
+    position: relative;
+    z-index: 2;
+}
+
+.dash_h2::before {
+    content: attr(data-en);
+    position: absolute;
+    transform: rotate(-5deg);
+    top: -20px;
+    left: 0;
+    color: rgba(23,28,97,0.09);
+    font-size: 80px;
+    font-weight: 400;
+    font-family: luxus-brut, cursive;
+    font-style: italic;
+}
+/*=================[dash 登録ボタン]===============-*/
+.btn-border {
+    border: 2px solid #000;
+    border-radius: 0;
+    background: #fff;
+
+    -webkit-transform-style: preserve-3d;
+
+    transform-style: preserve-3d;
+}
+
+.btn-border:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 5px;
+    height: 100%;
+
+    content: '';
+    -webkit-transition: all .3s;
+    transition: all .3s;
+
+    background: #000;
+}
+
+.btn-border:hover {
+    color: #fff;
+    background: #000;
+}
+
+.btn-border:hover:before {
+    background: #fff;
+}
 
 /*========[質問アコーディオンメニュー]==============*/
 

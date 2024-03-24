@@ -2,7 +2,7 @@
     <div class="flexColumn items-center gap-16 py-10">
         {{--現在の一覧表示--}}
         <section class="w-[90%] flexColumn gap-8 sm:rounded-lg">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 製品一覧 】</h2>
+            <x-dash-title title="製品一覧" en="Product List"></x-dash-title>
 
             <div class="overflow-y-auto overflow-x-auto h-600">
                 <table class="whitespace-nowrap shadow-md w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -73,7 +73,8 @@
 
         {{--Add product--}}
         <section class="w-[90%] flexColumn gap-8">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">【 製品の追加 】</h2>
+            <x-dash-title title="製品追加" en="New Product"></x-dash-title>
+
             <form class="Form flexColumn gap-8" method="post" action="{{route("add-product")}}" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -86,9 +87,7 @@
                         <input type="file" accept="image/jpeg,image/png" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>
-                <div class="flex justify-center">
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-3 text-center">登録</button>
-                </div>
+                <x-register_btn></x-register_btn>
             </form>
         </section>
     </div>
