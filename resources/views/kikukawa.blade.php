@@ -1,4 +1,4 @@
-<x-layout title="株式会社三秀">
+<x-layout title="株式会社三秀!">
     <x-header></x-header>
 
     <main class="bg-main flex flex-col items-center h-full">
