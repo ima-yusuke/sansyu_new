@@ -5,14 +5,14 @@
 
         {{--ヘッダービジュアル--}}
         <section id="home" class="flexColumn lg:flexBetween relative z-10 w-full pb-16">
-            <div class="flexColumn md:gap-12 gap-6 text-baseColor pt-24 lg:pt-0 pl-3 md:pl-12">
-                <p class="text-sm md:text-base font-medium">キクカワエンタープライズ株式会社 採用特設サイト</p>
-                <aside class="flexColumn items-start gap-6 md:gap-10">
-                    <div class="flexColumn text-2xl md:text-5xl font-bold md:gap-y-3">
+            <div class="flexColumn md:gap-12 gap-6 text-baseColor pt-24 lg:pt-0 2xl:pt-12 pl-3 md:pl-12 2xl:pl-24">
+                <p class="text-sm md:text-base 2xl:text-xl font-medium">キクカワエンタープライズ株式会社 採用特設サイト</p>
+                <aside class="flexColumn items-start gap-6 md:gap-10 2xl:gap-16">
+                    <div class="flexColumn text-2xl md:text-5xl 2xl:text-6xl font-bold md:gap-y-3">
                         <h2><i>KIKUKAWA</i>で見つけよう、</h2>
                         <h2>わたしのミライ。</h2>
                     </div>
-                    <h4 class="text-base md:text-2xl font-bold">あなたの情熱、私たちと共有しませんか？</h4>
+                    <h4 class="text-base md:text-2xl 2xl:text-3xl font-bold">あなたの情熱、私たちと共有しませんか？</h4>
                 </aside>
             </div>
             <div>
@@ -21,7 +21,7 @@
         </section>
 
         {{--ヘッダー背景ボール--}}
-        <div class="rounded-1019 shadow-headBall h-1000 w-1000 absolute left-428 top-413 bg-gradient-to-r from-headLinerStart from-32.36% to-headLinerEnd to-79.42%"></div>
+        <div class="rounded-1019 shadow-headBall h-1000 2xl:h-1200 w-1000 2xl:w-1200 absolute left-428 top-413 bg-gradient-to-r from-headLinerStart from-32.36% to-headLinerEnd to-79.42%"></div>
 
         {{--開催情報--}}
         <section class="commonSectionStyles w-full">
@@ -88,7 +88,7 @@
                 <article class="flex flex-col justify-center items-start gap-16">
                     <div class="flex items-start justify-center content-start gap-6 flex-wrap w-full">
                         @foreach($products as $key=>$value)
-                            <aside class="shadow-item flexColumn overflow-hidden h-230 items-center gap-2 pb-4 rounded-8 w-[90%] md:w-[48%] lg:w-[31%]">
+                            <aside class="shadow-item flexColumn overflow-hidden h-230 2xl:h-300 items-center gap-2 pb-4 rounded-8 w-[90%] md:w-[48%] lg:w-[31%]">
                                 <img src="{{asset($value->path)}}" class="h-[85%] w-full rounded-8 shrink-0 object-cover" alt="image">
                                 <p>{{$value["p_name"]}}</p>
                             </aside>
@@ -153,21 +153,21 @@
 
             {{--コンテンツ--}}
             <livewire:modal :interviews="$interviews"></livewire:modal>
-
         </section>
 
         {{--募集職種・募集要項--}}
-        <section id="jobs" class="commonSectionStyles mx-4 w-full">
+        <section id="jobs" class="commonSectionStyles mx-4 w-full 2xl:w-[85%]">
             {{--タイトル--}}
             <x-title>募集職種・募集要項</x-title>
 
-            <div class="flexColumnCenter md:flex-row md:flex-wrap md:items-start lg:justify-between gap-y-14 lg:w-full lg:px-24">
+            <div class="flexColumnCenter md:flex-row md:flex-wrap md:items-start lg:justify-between gap-y-14 md:w-[90%]">
                 {{--各部門--}}
                 @foreach($job_recruits as $value)
                     <article class="flexColumn items-start gap-2.5 relative  w-11/12 lg:w-[47%] rounded-8 bg-white shadow-depart overflow-hidden">
                         {{--背景ボール--}}
                         <div>
-                            <div class="absolute lg:-top-10 -top-5 right-200 md:right-600 lg:right-410 w-275 h-277 rounded-277 bg-gradient-to-r from-departStart from-0% to-departEnd to-100%"></div>
+                            <div class="absolute -top-8 lg:-top-12 -left-12 md:-left-8 w-275 h-277 rounded-277 bg-gradient-to-r from-departStart from-0% to-departEnd to-100%"></div>
+                            {{--                            <div class="absolute lg:-top-10 -top-5 right-200 md:right-600 lg:right-410 w-275 h-277 rounded-277 bg-gradient-to-r from-departStart from-0% to-departEnd to-100%"></div>--}}
                         </div>
                         {{--部門詳細テキスト--}}
                         <div class="flexColumn items-start gap-4 p-6 z-30">
@@ -225,7 +225,7 @@
         </section>
 
         {{--待遇・福利厚生--}}
-        <section class="commonSectionStyles mx-4 w-full">
+        <section class="commonSectionStyles mx-4 w-full 2xl:w-[85%]">
             {{--タイトル--}}
             <x-title>待遇・福利厚生</x-title>
             {{--コンテンツ--}}
@@ -240,14 +240,14 @@
         </section>
 
         {{--採用フロー--}}
-        <section class="commonSectionStyles mx-4">
+        <section class="commonSectionStyles mx-4 w-[90%] lg:w-full 2xl:w-[85%]">
             {{--タイトル--}}
             <x-title>採用フロー</x-title>
             {{--コンテンツ--}}
-            <div class="flexColumnCenter md:flex-row md:items-start gap-16">
+            <div class="flexColumnCenter md:flex-row md:items-start gap-16 lg:w-[90%]">
 
                 {{--フロー--}}
-                <div class="flexColumn items-start gap-12 shadow-border py-16 px-12 md:w-1/2 rounded-4 bg-white">
+                <div class="flexColumn items-start gap-12 shadow-border py-16 px-6 md:px-12 md:w-[50%] rounded-4 bg-white">
                     {{--フロー図--}}
                     <aside class="flexColumn justify-center items-start gap-2 self-stretch">
                         @foreach($recruit_flow as $value)
@@ -274,7 +274,7 @@
                 </div>
 
                 {{--提出書類--}}
-                <div class="flexColumnCenter gap-6 p-9 shadow-border w-full md:w-[35%] rounded-8 bg-white">
+                <div class="flexColumnCenter gap-6 p-9 shadow-border w-full md:w-[50%] rounded-8 bg-white">
                     <p class="font-bold">提出書類</p>
                     <aside class="flexColumn items-start gap-4">
                         @foreach($recruit_documents as $value)
@@ -289,13 +289,13 @@
         </section>
 
         {{--よくある質問--}}
-        <section class="commonSectionStyles overflow-hidden relative w-full">
+        <section class="commonSectionStyles overflow-hidden relative w-full 2xl:w-[85%]">
             {{--スクエア背景--}}
             <div class="w-1820 h-507 opacity-50 absolute top-0 rotate-45 bg-gradient-to-r from-square from-7.08% to-headLinerEnd to-98.07% shrink-0"></div>
             {{--タイトル--}}
             <x-title>よくある質問</x-title>
             {{--コンテンツ--}}
-            <div class="w-[90%] lg:w-[85] mx-4 flexColumnCenter flex-wrap md:flex-row lg:justify-between md:items-start gap-4 z-50 pt-16 overflow-hidden ">
+            <div class="w-full lg:w-[90%] mx-4 flexColumnCenter flex-wrap md:flex-row lg:justify-between md:items-start gap-4 z-50 overflow-hidden ">
                 @foreach($questions as $idx=>$values)
                     {{--各質問--}}
                     <div class="qa__item z-50 py-6 px-2 flexColumn justify-center gap-6 bg-white shadow-question border border-solid border-questionBorder rounded-15 w-[90%] md:w-[80%] lg:w-[47%] shrink-0">

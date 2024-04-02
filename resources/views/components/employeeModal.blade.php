@@ -7,7 +7,7 @@
         <div class="overflow-scroll flexColumnCenter p-6">
 
                 {{--Modal header--}}
-                <div class="ml-0 fixed top-53 right-20 lg:right-260 z-100">
+                <div class="ml-0 fixed top-53 right-20 lg:right-260 2xl:right-[24%] z-100">
                     <button wire:click="closeModal()" class="ml-auto"><i class="fa-solid fa-xmark text-4xl font-bold"></i></button>
                 </div>
 
