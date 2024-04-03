@@ -1,4 +1,4 @@
-<x-layout title="株式会社三秀!">
+<x-layout title="株式会社三秀">
     <x-header></x-header>
 
     <main class="bg-main flex flex-col items-center h-full">
@@ -6,13 +6,14 @@
         {{--ヘッダービジュアル--}}
         <section id="home" class="flexColumn lg:flexBetween relative z-10 w-full pb-16">
             <div class="flexColumn md:gap-12 gap-6 text-baseColor pt-24 lg:pt-0 2xl:pt-12 pl-3 md:pl-12 2xl:pl-24">
-                <p class="text-sm md:text-base 2xl:text-xl font-medium">キクカワエンタープライズ株式会社 採用特設サイト</p>
+                <p class="text-sm md:text-base 2xl:text-xl font-medium">株式会社三秀 採用特設サイト</p>
                 <aside class="flexColumn items-start gap-6 md:gap-10 2xl:gap-16">
                     <div class="flexColumn text-2xl md:text-5xl 2xl:text-6xl font-bold md:gap-y-3">
-                        <h2><i>KIKUKAWA</i>で見つけよう、</h2>
-                        <h2>わたしのミライ。</h2>
+                        <h2>モノづくりの難しさと楽しさ</h2>
+                        <h2>職人の技と最新の設備</h2>
+                        <h2>その先に産まれるヨロコビ</h2>
                     </div>
-                    <h4 class="text-base md:text-2xl 2xl:text-3xl font-bold">あなたの情熱、私たちと共有しませんか？</h4>
+                    <h4 class="text-base md:text-2xl 2xl:text-3xl font-bold">金属プレス加工・コンクリート型枠の 株式会社 三秀</h4>
                 </aside>
             </div>
             <div>
@@ -23,31 +24,6 @@
         {{--ヘッダー背景ボール--}}
         <div class="rounded-1019 shadow-headBall h-1000 2xl:h-1200 w-1000 2xl:w-1200 absolute left-428 top-413 bg-gradient-to-r from-headLinerStart from-32.36% to-headLinerEnd to-79.42%"></div>
 
-        {{--開催情報--}}
-        <section class="commonSectionStyles w-full">
-            <div class="w-[90%] lg:w-[75%] md:events flexColumnCenter flex-wrap md:flex-row md:justify-between md:items-start gap-12 lg:gap-24">
-                @foreach($categories as $key=>$value)
-                    @if(count($value->category)>0)
-                        <article class="flexColumnCenter gap-9 shrink-0 w-full md:w-[45%]">
-                            <h3 class="text-base font-bold leading-7">
-                                    {{$value["category_name"]}}
-                            </h3>
-
-                            @foreach($value->category as $idx =>$val)
-                                <div class="flexBetween w-full self-stretch border border-solid border-titleBlack p-4 rounded-8 bg-white shadow-border">
-                                    <aside class="flexColumn items-start gap-2">
-                                        <p class="text-xs font-normal">{{$val["date"]}}</p>
-                                        <p class="text-sm font-normal">{{$val["title"]}}</p>
-                                    </aside>
-                                    <div><i class="fa-solid fa-caret-right"></i></div>
-                                </div>
-                            @endforeach
-                        </article>
-                    @endif
-                @endforeach
-            </div>
-        </section>
-
         {{--会社紹介--}}
         <section id="about" class="flex flex-col-reverse gap-12 md:flexCenter py-24 lg:py-32 mx-4">
             <img src="{{asset("img/kikukawaPic02.jpg")}}" class="rounded-15 shrink-0 object-cover md:w-[40%]" alt="image">
@@ -56,50 +32,20 @@
                     {{--タイトル--}}
                     <x-title>会社紹介</x-title>
 
-                    <aside>
-                        <p class="text-xl md:text-2xl font-bold text-aboutCompany capitalize">明治30年創業。</p>
-                        <p class="text-xl md:text-2xl font-bold text-aboutCompany capitalize leading-8 md:leading-9">
-                            加工機のパイオニアとして、現在も世界のモノづくりを牽引しています
-                        </p>
-                    </aside>
                     <p class="text-base leading-7">
-                        1897（明治30）年、日本初の製材・木工機械メーカーとして伊勢で創業。「切る・削る・磨く」技術の革新をし続け、常に新しい様々な分野の加工機を製造・販売しています。</p>
+                        制作当時(2021年）、三秀の目標は自社製品を開発して一般顧客に販売することでした。イラストにはこれまで手掛けた製品に加え、未来となる2031年、2050年の年号と、これまで作ったことのない製品（テントやフライパン）なども描きました。
+                        今、三秀はこれらの夢を少しずつ実現しています。
+                    </p>
                 </div>
                 <div>
-                    <a class="flex items-center justify-between w-48 py-1.5 px-6 border border-solid border-baseColor rounded-button">詳しく見る<i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+                    <a class="flex items-center justify-between w-48 py-1.5 px-6 border border-solid border-baseColor rounded-button">
+                        詳しく見る
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
             </article>
         </section>
 
-        {{--製品紹介--}}
-        <section class="commonSectionStyles md:mx-4">
-            <div class="lg:w-2/3  flex flex-col items-start gap-8 mx-4">
-                <article class="flex flex-col items-start gap-9 mx-4">
-                    {{--タイトル--}}
-                    <x-title>製品紹介</x-title>
-
-                    <p class="text-xl md:text-2xl font-bold text-aboutCompany capitalize leading-8 md:leading-9 self-stretch">
-                        製材機械から鉄道、スマートフォンなど暮らしのあらゆるものに関わっています</p>
-                    <p class="text-base leading-7"><i>KIKUKAWA</i>の技術は人々の暮らしの中に幅広く溶け込んで長年にわたりご愛顧いただいております。
-                    </p>
-                </article>
-
-                {{--コンテンツ--}}
-                <article class="flex flex-col justify-center items-start gap-16">
-                    <div class="flex items-start justify-center content-start gap-6 flex-wrap w-full">
-                        @foreach($products as $key=>$value)
-                            <aside class="shadow-item flexColumn overflow-hidden h-230 2xl:h-300 items-center gap-2 pb-4 rounded-8 w-[90%] md:w-[48%] lg:w-[31%]">
-                                <img src="{{asset($value->path)}}" class="h-[85%] w-full rounded-8 shrink-0 object-cover" alt="image">
-                                <p>{{$value["p_name"]}}</p>
-                            </aside>
-                        @endforeach
-                    </div>
-                </article>
-            </div>
-            <div class="mt-8 md:mt-12">
-                <a class="flex items-center justify-between w-48 py-1.5 px-6 border border-solid border-baseColor rounded-button">製品を見る<i
-                        class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
-        </section>
 
         {{--メッセージ--}}
         <section id="messages" class="commonSectionStyles md:items-start lg:items-center relative overflow-hidden [&>*:not(:first-child)]:mx-4">
@@ -117,7 +63,8 @@
                         <article class="flexColumn md:flex-row items-center gap-12">
                             <aside class="w-full md:w-auto">
                                 <div class="w-full md:w-270 md:h-330 flex justify-start items-start relative">
-                                    <img src="{{asset($value["path"])}}"
+                                    <h1>{{$value["path"]}}</h1>
+                                    <img src="{{asset($value['path'])}}"
                                          class="rounded-8 w-full h-full object-cover" alt="image">
                                     <img src="{{asset("img/messageBg.jpg")}}"
                                          class="bottom-5 left-0 right-0 m-auto m-0 absolute rounded-8" alt="image">
@@ -131,10 +78,6 @@
                                 </div>
                             </aside>
                             <aside class="flexColumn items-start gap-4">
-                                <div
-                                    class="flex justify-center items-start gap-2.5 pl-4 border-l-4 border-solid border-baseColor">
-                                    <p class="font-bold leading-7 capitalize">{{$value["title"]}}</p>
-                                </div>
                                 <div class="leading-7 capitalize flex flex-col gap-y-8 w-full">
                                    <p class="whitespace-pre-wrap">{{$value["msg"]}}</p>
                                 </div>
