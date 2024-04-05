@@ -12,6 +12,7 @@ export default {
         './node_modules/flowbite/**/*.js',
     ],
 
+
     theme: {
         extend: {
             fontFamily: {
@@ -25,9 +26,11 @@ export default {
                 '91':'91px',
             },
             colors:{
+                "baseColor":"#171C61",
+                "top_bg":"rgb(246,245,245,0.3)",
+                // =================================
                 "titleBlack":"#1E3447",
                 "textBlack":"#1E3346",
-                "baseColor":"#171C61",
                 "buttonLinerStart":"#91CBD8",
                 "buttonLinerEnd":"#85D9CA",
                 "headLinerStart":"#9EA7F7",

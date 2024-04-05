@@ -1,28 +1,17 @@
 <x-layout title="株式会社三秀">
     <x-header></x-header>
 
-    <main class="bg-main flex flex-col items-center h-full">
+    <main class="bg-top_bg flex flex-col items-center h-full">
 
         {{--ヘッダービジュアル--}}
         <section id="home" class="flexColumn lg:flexBetween relative z-10 w-full pb-16">
-            <div class="flexColumn md:gap-12 gap-6 text-baseColor pt-24 lg:pt-0 2xl:pt-12 pl-3 md:pl-12 2xl:pl-24">
-                <p class="text-sm md:text-base 2xl:text-xl font-medium">株式会社三秀 採用特設サイト</p>
-                <aside class="flexColumn items-start gap-6 md:gap-10 2xl:gap-16">
-                    <div class="flexColumn text-2xl md:text-5xl 2xl:text-6xl font-bold md:gap-y-3">
-                        <h2>モノづくりの難しさと楽しさ</h2>
-                        <h2>職人の技と最新の設備</h2>
-                        <h2>その先に産まれるヨロコビ</h2>
-                    </div>
-                    <h4 class="text-base md:text-2xl 2xl:text-3xl font-bold">金属プレス加工・コンクリート型枠の 株式会社 三秀</h4>
-                </aside>
+            <div class="bg-top_bg absolute bottom-6 left-4 object-cover">
+                <h1 class="text-9xl font-bold  text-baseColor">モノづくりの難しさと楽しさ</h1>
+                <h1 class="text-9xl font-bold text-baseColor">職人の技と最新の設備</h1>
+                <h1 class="text-9xl font-bold text-baseColor">その先に産まれるヨロコビ</h1>
             </div>
-            <div>
-                <img src="{{asset("img/kikukawaPic01.png")}}" class="max-w-full ml-auto pl-5 mt-60 md:mt-100 object-cover" alt="image">
-            </div>
+            <img src="{{asset("img/top_bg.png")}}" class="w-full h-auto" alt="image">
         </section>
-
-        {{--ヘッダー背景ボール--}}
-        <div class="rounded-1019 shadow-headBall h-1000 2xl:h-1200 w-1000 2xl:w-1200 absolute left-428 top-413 bg-gradient-to-r from-headLinerStart from-32.36% to-headLinerEnd to-79.42%"></div>
 
         {{--会社紹介--}}
         <section id="about" class="flex flex-col-reverse gap-12 md:flexCenter py-24 lg:py-32 mx-4">
@@ -63,7 +52,6 @@
                         <article class="flexColumn md:flex-row items-center gap-12">
                             <aside class="w-full md:w-auto">
                                 <div class="w-full md:w-270 md:h-330 flex justify-start items-start relative">
-                                    <h1>{{$value["path"]}}</h1>
                                     <img src="{{asset($value['path'])}}"
                                          class="rounded-8 w-full h-full object-cover" alt="image">
                                     <img src="{{asset("img/messageBg.jpg")}}"
@@ -199,7 +187,7 @@
                                     <div class="flexCenter w-30 h-30 md:w-36 md:h-36 shrink-0 rounded-30 bg-headLinerEnd">
                                         <p class="text-white text-base lg:text-xl font-semibold leading-6 shrink-0">{{$value["num"]}}</p>
                                     </div>
-                                    @if($value["num"]!=6)
+                                    @if($value["num"]!=3)
                                         <div class="h-30 w-0.5 bg-headLinerEnd"></div>
                                     @endif
                                 </div>
@@ -207,12 +195,6 @@
                                 <p class="flex justify-start items-center h-30 md:h-36 text-base lg:text-xl">{{$value["title"]}}</p>
                             </div>
                         @endforeach
-                    </aside>
-
-                    {{--フロー図下部テキスト--}}
-                    <aside class="flexColumn items-start gap-3 text-sm md:text-base">
-                        <p class="leading-4 font-bold">※説明会・選考での交通費等について</p>
-                        <p>公共交通機関は当社が負担いたします。 遠方の場合、制限はありますが、ご相談ください。</p>
                     </aside>
                 </div>
 

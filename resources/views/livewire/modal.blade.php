@@ -8,11 +8,6 @@
             </aside>
             <aside class="bg-white flex flex-col items-center gap-y-4 py-6">
                 <h4 class="text-baseColor font-bold text-xl">{{$value["name"]}}</h4>
-                <div class="text-textGray">
-                    <P>{{$value["hire_year"]}}入社</P>
-                    <p>{{$value["school"]}} {{$value["department"]}}</p>
-                    <p>{{$value["faculty"]}} 卒業</p>
-                </div>
 
                 {{--Open modalbox--}}
                 <div>

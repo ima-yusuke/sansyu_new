@@ -36,12 +36,9 @@ class kikukawaController extends Controller
         $benefits = Benefit::all();
 
         $recruit_flow = [
-            ["num" => 1, "title" => "エントリー"],
-            ["num" => 2, "title" => "説明会(対面・WEB)"],
-            ["num" => 3, "title" => "エントリーシート提出(随時)"],
-            ["num" => 4, "title" => "書類選考"],
-            ["num" => 5, "title" => "筆記試験・役員面接"],
-            ["num" => 6, "title" => "内々定"]
+            ["num" => 1, "title" => "書類選考"],
+            ["num" => 2, "title" => "面接"],
+            ["num" => 3, "title" => "内定・採用"],
         ];
 
         $recruit_documents = ["履歴書(写真付き)", "成績証明書", "卒業見込証明書"];
