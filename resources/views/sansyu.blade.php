@@ -1,10 +1,10 @@
 <x-layout title="株式会社三秀">
     <x-header></x-header>
 
-    <main class="bg-top_bg flex flex-col items-center h-full">
+    <main class="bg-top_bg flex flex-col gap-6 items-center h-full">
 
         {{--ヘッダービジュアル--}}
-        <section id="home" class="flexColumn lg:flexBetween relative z-10 w-full pb-16">
+        <section id="home" class="relative z-10 w-full">
             <div class="bg-top_bg absolute bottom-6 left-4 object-cover">
                 <h1 class="text-9xl font-bold  text-baseColor">モノづくりの難しさと楽しさ</h1>
                 <h1 class="text-9xl font-bold text-baseColor">職人の技と最新の設備</h1>
@@ -14,25 +14,38 @@
         </section>
 
         {{--会社紹介--}}
-        <section id="about" class="flex flex-col-reverse gap-12 md:flexCenter py-24 lg:py-32 mx-4">
-            <img src="{{asset("img/kikukawaPic02.jpg")}}" class="rounded-15 shrink-0 object-cover md:w-[40%]" alt="image">
-            <article class="flexColumnCenter gap-12 md:w-[40%]">
-                <div class="flex flex-col items-start gap-9">
-                    {{--タイトル--}}
-                    <x-title>会社紹介</x-title>
-
-                    <p class="text-base leading-7">
-                        制作当時(2021年）、三秀の目標は自社製品を開発して一般顧客に販売することでした。イラストにはこれまで手掛けた製品に加え、未来となる2031年、2050年の年号と、これまで作ったことのない製品（テントやフライパン）なども描きました。
-                        今、三秀はこれらの夢を少しずつ実現しています。
-                    </p>
+        <section id="about" class="relative w-full h-auto">
+            <article class="absolute top-36 left-32 flex flex-col gap-16">
+                <div class="text-white flex flex-col gap-24">
+                    <aside>
+                        <h2 class="text-6xl font-bold">About</h2>
+                        <p>会社紹介</p>
+                    </aside>
+                    <div class="flex flex-col gap-8">
+                        <aside class="flex flex-col gap-4">
+                            <h2 class="text-6xl font-bold">金属製品の試作はお任せください。</h2>
+                            <h2 class="text-6xl font-bold">なんでも作れます！短納期・小ロットで形にします。</h2>
+                        </aside>
+                        <aside class="flex flex-col gap-4 w-[50%] text-2xl font-medium">
+                            <p>
+                                三秀精機製造 株式会社は、自動車部品の量産を行っていた株式会社三秀より独立し、試作部品を製造する会社として1967年に創業。
+                            </p>
+                            <p>
+                                50年以上の歴史から、精度の高い品物を短納期で製作するためのノウハウを培ってきました。 現在ではトラックやバス、航空機の排水溝、鉄道のパンタグラフなど、 様々な分野の製品を手掛けております。
+                            </p>
+                        </aside>
+                    </div>
                 </div>
-                <div>
-                    <a class="flex items-center justify-between w-48 py-1.5 px-6 border border-solid border-baseColor rounded-button">
-                        詳しく見る
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
+
+                <div class="flex items-center gap-4 ml-auto mr-36 mt-16">
+                    <p class="text-white text-xl">View more</p>
+                    <div class="bg-white rounded-277 w-24 h-24 text-4xl"><a class="flex rounded-277 items-center justify-center w-full h-full hover:bg-baseColor hover:text-white">→</a></div>
                 </div>
             </article>
+
+            <div class="w-full h-auto bg-top2_bg">
+                <img src="{{asset("img/about_bg.jpg")}}" class="w-full h-auto" alt="image">
+            </div>
         </section>
 
 

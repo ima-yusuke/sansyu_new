@@ -28,6 +28,7 @@ export default {
             colors:{
                 "baseColor":"#171C61",
                 "top_bg":"rgb(246,245,245,0.3)",
+                "top2_bg":"rgb(246,245,245,0.8)",
                 // =================================
                 "titleBlack":"#1E3447",
                 "textBlack":"#1E3346",
